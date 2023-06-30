@@ -1,0 +1,18 @@
+{
+  "name": "tiled-property-flattener",
+  "version": "1.0.0",
+  "description": "\"Flattens the properties of the Tiled classes contained by any Tiled class, or Tiled object/layer, into the Tiled class's/object's/layer's own properties, as if it had inherited the properties. Additionally, allows the user to mark classes as being intentionally composite via the `@composite:` prefix to prevent inheritance.\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "parse"
+  },
+  "repository": {
+    "type": "git",
+    "url": ".git"
+  },
+  "keywords": [
+    "Tiled"
+  ],
+  "author": "rui-han-crh",
+  "license": "ISC"
+}
