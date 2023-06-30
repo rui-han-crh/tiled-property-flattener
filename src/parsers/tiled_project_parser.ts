@@ -1,5 +1,5 @@
-import { Flattener } from './flattener';
-import TiledProjectParsedResult from './tiled_project_parsed_result';
+import { Flattener } from './flattener.js';
+import TiledProjectParsedResult from './tiled_project_parsed_result.js';
 
 /**
  * Parses a Tiled project file.
@@ -11,13 +11,13 @@ import TiledProjectParsedResult from './tiled_project_parsed_result';
  * However, that class will be composed under its parent class and may flatten its own properties.
  * This mimics composition in Tiled.
  */
-export function parse (jsonProjectFile: any): TiledProjectParsedResult {
+export function parse (jsonProjectFileData: any): TiledProjectParsedResult {
     // For enums, we map the enum name to its values, where its values are a Set.
     /**
      * A map of all the enums in the project file.
      */
     const enumNameToValuesMap: ReadonlyMap<string, ReadonlySet<string>> = new Map(
-        jsonProjectFile.propertyTypes.filter(
+        jsonProjectFileData.propertyTypes.filter(
             (propertyType: any) => propertyType.type === 'enum'
         ).map(
             (enumPropertyType: any) => [enumPropertyType.name, new Set(enumPropertyType.values)]
@@ -30,7 +30,7 @@ export function parse (jsonProjectFile: any): TiledProjectParsedResult {
      * This is to maintain a constant access time, otherwise we would have to iterate over the array.
      */
     const tiledClassToMembersMap: ReadonlyMap<string, any> = new Map<string, any>(
-        jsonProjectFile.propertyTypes.filter(
+        jsonProjectFileData.propertyTypes.filter(
             (propertyType: any) => propertyType.type === 'class'
         ).map(
             (tiledClass: any) => [tiledClass.name, tiledClass.members]

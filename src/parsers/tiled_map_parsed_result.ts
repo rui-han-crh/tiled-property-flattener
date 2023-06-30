@@ -1,37 +1,64 @@
-type Constructor<T> = new (...args: any[]) => T;
-
 export default class TiledMapParsedResult {
-    /**
-     * Finds all objects of the given type.
-     * @param typeConstructor The type of object to find.
-     * @returns An array of objects of the given type.
-     */
-    public getObjects<T extends TiledGameObject>(typeConstructor: Constructor<T>): T[] {
-        return Array.from(this.idToObjectMap.values())
-            .filter(
-                (gameObject: TiledGameObject) => gameObject instanceof typeConstructor
-            ) as T[];
+    constructor (
+        private readonly layerIdToPropertiesMap: ReadonlyMap<number, any>,
+        private readonly objectIdToPropertiesMap: ReadonlyMap<number, any>
+    ) {
     }
 
     /**
-     * Gets a copy of the idToObjectMap, with all objects reset.
-     *
-     * Within each object, the charIdToObjectMap is updated to point to the new objects.
+     * Gets a copy of the objectIdToObjectMap.
      */
-    public getIdToObjectMap (): ReadonlyMap<number, TiledGameObject> {
-        console.log('Copying all objects.');
-
-        // Copy a new map of the objects, deep copying the objects.
-        const idToObjectMap: ReadonlyMap<number, TiledGameObject> = new Map<number, TiledGameObject>(
-            Array.from(this.idToObjectMap.entries())
-                .map(([id, object]) => [id, object.clone()])
+    public getObjectIdToPropertiesMap (): ReadonlyMap<number, any> {
+        // Copy a new map of the properties, deep copying the properties.
+        const clonedIdToPropertiesMap: ReadonlyMap<number, any> = new Map<number, any>(
+            Array.from(this.objectIdToPropertiesMap.entries())
+                .map(([id, object]) => [id, object])
         );
 
-        // Update the charIdToObjectMap in all the objects.
-        idToObjectMap.forEach((object: TiledGameObject) => {
-            object.setIdToObjectMapping(idToObjectMap);
-        });
+        return clonedIdToPropertiesMap;
+    }
 
-        return idToObjectMap;
+    /**
+     * Gets a copy of the layerIdToPropertiesMap.
+     */
+    public getLayerIdToPropertiesMap (): ReadonlyMap<number, any> {
+        // Copy a new map of the properties, deep copying the properties.
+        const clonedIdToPropertiesMap: ReadonlyMap<number, any> = new Map<number, any>(
+            Array.from(this.layerIdToPropertiesMap.entries())
+                .map(([id, object]) => [id, object])
+        );
+
+        return clonedIdToPropertiesMap;
+    }
+
+    /**
+     * Gets a JSON of the idToObjectMap.
+     */
+    public toJson (): any {
+        // Recursively build the JSON object, converting sets to arrays and maps to objects.
+        const convertToJson = (object: any): any => {
+            if (object instanceof Set) {
+                return Array.from(object.values()).map(convertToJson);
+            } else if (object instanceof Map) {
+                return Object.fromEntries(
+                    Array.from(object.entries()).map(([key, value]) => [key, convertToJson(value)])
+                );
+            } else if (typeof object === 'object') {
+                const newObject: any = {};
+
+                Object.entries(object).forEach(([key, value]) => {
+                    newObject[key] = convertToJson(value);
+                });
+
+                return newObject;
+            } else {
+                return object;
+            }
+        };
+
+        return JSON.stringify({
+            layers: convertToJson(this.getLayerIdToPropertiesMap()),
+            objects: convertToJson(this.getObjectIdToPropertiesMap())
+        }, null, 4);
     }
 }

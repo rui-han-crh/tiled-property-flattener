@@ -5,6 +5,7 @@
             "strictNullChecks": true,
             "resolveJsonModule": true,
             "esModuleInterop": true,
+            "allowSyntheticDefaultImports": true,
             "outDir": "./dist"
     },
     "include": ["./src/**/*", "parsers"]

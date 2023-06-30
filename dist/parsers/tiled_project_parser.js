@@ -1,5 +1,5 @@
-import { Flattener } from './flattener';
-import TiledProjectParsedResult from './tiled_project_parsed_result';
+import { Flattener } from './flattener.js';
+import TiledProjectParsedResult from './tiled_project_parsed_result.js';
 /**
  * Parses a Tiled project file.
  *
@@ -10,18 +10,18 @@ import TiledProjectParsedResult from './tiled_project_parsed_result';
  * However, that class will be composed under its parent class and may flatten its own properties.
  * This mimics composition in Tiled.
  */
-export function parse(jsonProjectFile) {
+export function parse(jsonProjectFileData) {
     // For enums, we map the enum name to its values, where its values are a Set.
     /**
      * A map of all the enums in the project file.
      */
-    const enumNameToValuesMap = new Map(jsonProjectFile.propertyTypes.filter((propertyType) => propertyType.type === 'enum').map((enumPropertyType) => [enumPropertyType.name, new Set(enumPropertyType.values)]));
+    const enumNameToValuesMap = new Map(jsonProjectFileData.propertyTypes.filter((propertyType) => propertyType.type === 'enum').map((enumPropertyType) => [enumPropertyType.name, new Set(enumPropertyType.values)]));
     /**
      * A map the tiledClass name to their object members.
      * The `members` are the custom properties of the class as in Tiled, which may contain nested objects.
      * This is to maintain a constant access time, otherwise we would have to iterate over the array.
      */
-    const tiledClassToMembersMap = new Map(jsonProjectFile.propertyTypes.filter((propertyType) => propertyType.type === 'class').map((tiledClass) => [tiledClass.name, tiledClass.members]));
+    const tiledClassToMembersMap = new Map(jsonProjectFileData.propertyTypes.filter((propertyType) => propertyType.type === 'class').map((tiledClass) => [tiledClass.name, tiledClass.members]));
     const flattener = new Flattener(tiledClassToMembersMap, enumNameToValuesMap);
     tiledClassToMembersMap.forEach((members, className) => {
         flattener.flattenMembers(className, members);

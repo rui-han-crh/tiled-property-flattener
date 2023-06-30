@@ -1,4 +1,4 @@
-const COMPOSITE_PREFIX = '@composite:';
+import { COMPOSITE_PREFIX } from './tiled_constants.js';
 /**
  * Offers a way to flatten a nested JSON structure.
  * This is used to mimic inheritance and composition in Tiled.
@@ -38,9 +38,6 @@ export class Flattener {
         if (this.memoiser.has(className)) {
             // Get the key-value pair of the class name and the flattened properties and we're done.
             return { [className]: this.memoiser.get(className) };
-        }
-        if (typeof className === 'number') {
-            console.log(className, members);
         }
         // Put all the members properties into one flattened object and memoise it.
         this.memoiser.set(className, members.reduce((acc, member) => ({ ...acc, ...this.flattenMemberProperty(member) }), {}));
@@ -113,7 +110,7 @@ export class Flattener {
                 return {
                     [member.name.replace(COMPOSITE_PREFIX, '')]: {
                         ...compositeClassFlattenedProperties,
-                        ...recursiveFlatten(member.value)
+                        ...recursiveFlatten(member.value, compositeClassFlattenedProperties)
                     }
                 };
             }
@@ -121,7 +118,7 @@ export class Flattener {
                 // Overwrite the composite properties with the current member's properties.
                 return {
                     ...compositeClassFlattenedProperties,
-                    ...recursiveFlatten(member.value)
+                    ...recursiveFlatten(member.value, compositeClassFlattenedProperties)
                 };
             }
         }
@@ -134,6 +131,10 @@ export class Flattener {
         }
     }
     ;
+    /**
+     * Returns the memoised flattened properties for all the classes,
+     * indexed by the class name as given in Tiled.
+     */
     get memoisedFlattenedProperties() {
         return this.memoiser;
     }
@@ -169,23 +170,35 @@ export class Flattener {
  *  of the same object.
  * @param currentIteration The current iteration of the recursive function.
  */
-function recursiveFlatten(propertyValue) {
+function recursiveFlatten(propertyValue, parentProperties) {
     return Object.entries(propertyValue).reduce((acc, [leftHandSide, rightHandSide]) => {
         // Perform recursive flattening based on the type of the value.
         if (typeof rightHandSide !== 'object') {
             // The value is a primitive, no flattening needed.
-            const result = {
-                [leftHandSide]: rightHandSide,
-                ...acc
-            };
-            return result;
+            // However, a primitive value may also be an enum.
+            // We need to check if the left hand side is an enum name in the parent properties.
+            // An enum is described by a Set of values.
+            if (parentProperties[leftHandSide] instanceof Set) {
+                // If it is an enum, we need to convert the value to a Set.
+                return {
+                    [leftHandSide]: new Set(rightHandSide.split(',')),
+                    ...acc
+                };
+            }
+            else {
+                // The left hand side is not an enum, we can just return the value.
+                return {
+                    [leftHandSide]: rightHandSide,
+                    ...acc
+                };
+            }
         }
         else if (leftHandSide.startsWith(COMPOSITE_PREFIX)) {
             const strippedName = leftHandSide.replace(COMPOSITE_PREFIX, '');
             // Else, if it is declared to be composite, we cannot flatten it.
             // However, we continue to flatten the rest of the properties.
             const result = {
-                [strippedName]: recursiveFlatten(rightHandSide),
+                [strippedName]: recursiveFlatten(rightHandSide, parentProperties),
                 ...acc
             };
             return result;
@@ -193,7 +206,7 @@ function recursiveFlatten(propertyValue) {
         else {
             // Finally, if it is an object, we can flatten it.
             const result = {
-                ...recursiveFlatten(rightHandSide),
+                ...recursiveFlatten(rightHandSide, parentProperties),
                 ...acc
             };
             return result;

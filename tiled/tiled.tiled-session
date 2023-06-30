@@ -1,0 +1,38 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "",
+    "expandedProjectPaths": [
+    ],
+    "fileStates": {
+        "map1.json": {
+            "scale": 2,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 163.25,
+                "y": 164.25
+            }
+        },
+        "map2.json": {
+            "scale": 2.3334374999999996,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 159.63573054774344,
+                "y": 159.63573054774344
+            }
+        }
+    },
+    "map.height": 10,
+    "map.lastUsedFormat": "json",
+    "map.layerDataFormat": null,
+    "map.width": 10,
+    "openFiles": [
+    ],
+    "project": "tiled.tiled-project",
+    "property.type": "float",
+    "recentFiles": [
+        "map2.json"
+    ]
+}

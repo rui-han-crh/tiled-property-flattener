@@ -1,0 +1,395 @@
+{
+    "automappingRulesFile": "",
+    "commands": [
+    ],
+    "compatibilityVersion": 1100,
+    "extensionsPath": "extensions",
+    "folders": [
+        "."
+    ],
+    "propertyTypes": [
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 10,
+            "members": [
+                {
+                    "name": "car",
+                    "propertyType": "Car",
+                    "type": "class",
+                    "value": {
+                        "motorVehicle": {
+                            "@composite:engine": {
+                                "number_of_cylinders": 4
+                            },
+                            "vehicle": {
+                                "number_of_wheels": 4,
+                                "vehicleUsage": "Racing,Transport",
+                                "weight": 1555
+                            }
+                        }
+                    }
+                }
+            ],
+            "name": "AudiA4",
+            "type": "class",
+            "useAs": [
+                "property",
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset"
+            ]
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 11,
+            "members": [
+                {
+                    "name": "@composite:engineA",
+                    "propertyType": "Engine",
+                    "type": "class",
+                    "value": {
+                        "number_of_cylinders": 64
+                    }
+                },
+                {
+                    "name": "@composite:engineB",
+                    "propertyType": "Engine",
+                    "type": "class",
+                    "value": {
+                        "number_of_cylinders": 64
+                    }
+                },
+                {
+                    "name": "plane",
+                    "propertyType": "Plane",
+                    "type": "class",
+                    "value": {
+                        "vehicle": {
+                            "canFly": true,
+                            "colour": "White",
+                            "number_of_wheels": 6,
+                            "vehicleUsage": "Transport",
+                            "weight": 41140
+                        }
+                    }
+                }
+            ],
+            "name": "Boeing737",
+            "type": "class",
+            "useAs": [
+                "property",
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset"
+            ]
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 4,
+            "members": [
+                {
+                    "name": "motorVehicle",
+                    "propertyType": "MotorVehicle",
+                    "type": "class",
+                    "value": {
+                        "vehicle": {
+                            "number_of_wheels": 4
+                        }
+                    }
+                }
+            ],
+            "name": "Car",
+            "type": "class",
+            "useAs": [
+                "property",
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset"
+            ]
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 9,
+            "members": [
+                {
+                    "name": "pulledVehicle",
+                    "propertyType": "PulledVehicle",
+                    "type": "class",
+                    "value": {
+                        "vehicle": {
+                            "colour": "Blue",
+                            "number_of_wheels": 4,
+                            "vehicleUsage": "Transport",
+                            "weight": 200
+                        }
+                    }
+                }
+            ],
+            "name": "Carriage",
+            "type": "class",
+            "useAs": [
+                "property",
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset"
+            ]
+        },
+        {
+            "id": 5,
+            "name": "Colour",
+            "storageType": "string",
+            "type": "enum",
+            "values": [
+                "Red",
+                "Green",
+                "Blue",
+                "Yellow",
+                "White"
+            ],
+            "valuesAsFlags": false
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 13,
+            "members": [
+                {
+                    "name": "layerType",
+                    "propertyType": "LayerType",
+                    "type": "string",
+                    "value": "Danger"
+                }
+            ],
+            "name": "DangerLayer",
+            "type": "class",
+            "useAs": [
+                "property",
+                "layer"
+            ]
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 8,
+            "members": [
+                {
+                    "name": "number_of_cylinders",
+                    "type": "int",
+                    "value": 0
+                }
+            ],
+            "name": "Engine",
+            "type": "class",
+            "useAs": [
+                "property",
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset"
+            ]
+        },
+        {
+            "id": 15,
+            "name": "LayerType",
+            "storageType": "string",
+            "type": "enum",
+            "values": [
+                "Danger",
+                "Safe"
+            ],
+            "valuesAsFlags": false
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 3,
+            "members": [
+                {
+                    "name": "@composite:engine",
+                    "propertyType": "Engine",
+                    "type": "class",
+                    "value": {
+                    }
+                },
+                {
+                    "name": "vehicle",
+                    "propertyType": "Vehicle",
+                    "type": "class",
+                    "value": {
+                    }
+                }
+            ],
+            "name": "MotorVehicle",
+            "type": "class",
+            "useAs": [
+                "property",
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset"
+            ]
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 12,
+            "members": [
+                {
+                    "name": "isFlying",
+                    "type": "bool",
+                    "value": false
+                },
+                {
+                    "name": "vehicle",
+                    "propertyType": "Vehicle",
+                    "type": "class",
+                    "value": {
+                        "canFly": true
+                    }
+                }
+            ],
+            "name": "Plane",
+            "type": "class",
+            "useAs": [
+                "property",
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset"
+            ]
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 2,
+            "members": [
+                {
+                    "name": "vehicle",
+                    "propertyType": "Vehicle",
+                    "type": "class",
+                    "value": {
+                        "vehicleUsage": "Transport"
+                    }
+                }
+            ],
+            "name": "PulledVehicle",
+            "type": "class",
+            "useAs": [
+                "property",
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset"
+            ]
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 14,
+            "members": [
+                {
+                    "name": "layerType",
+                    "propertyType": "LayerType",
+                    "type": "string",
+                    "value": "Safe"
+                }
+            ],
+            "name": "SafeLayer",
+            "type": "class",
+            "useAs": [
+                "property",
+                "layer"
+            ]
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 1,
+            "members": [
+                {
+                    "name": "amountOfFuelLeft",
+                    "type": "float",
+                    "value": 0
+                },
+                {
+                    "name": "colour",
+                    "propertyType": "Colour",
+                    "type": "string",
+                    "value": "Red"
+                },
+                {
+                    "name": "number_of_wheels",
+                    "type": "int",
+                    "value": 0
+                },
+                {
+                    "name": "vehicleUsage",
+                    "propertyType": "VehicleUsage",
+                    "type": "string",
+                    "value": ""
+                },
+                {
+                    "name": "weight",
+                    "type": "int",
+                    "value": 0
+                }
+            ],
+            "name": "Vehicle",
+            "type": "class",
+            "useAs": [
+                "property",
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset"
+            ]
+        },
+        {
+            "id": 6,
+            "name": "VehicleUsage",
+            "storageType": "string",
+            "type": "enum",
+            "values": [
+                "OffRoad",
+                "Racing",
+                "Transport"
+            ],
+            "valuesAsFlags": true
+        }
+    ]
+}
