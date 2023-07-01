@@ -1,8 +1,6 @@
 import minimist from 'minimist';
 import * as fs from 'fs';
-import * as TiledPropertyFlattener from './dist/tiled_property_flattener.min.js';
-
-const { TiledProjectParser, TiledMapParser } = TiledPropertyFlattener;
+import { TiledProjectParser, TiledMapParser } from './dist/tiled_property_flattener.min.js';
 
 function parseProjectFile (projectFilePath) {
     const projectFileData = JSON.parse(fs.readFileSync(projectFilePath, 'utf8'));
