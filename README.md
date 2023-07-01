@@ -44,18 +44,17 @@ To preview what an object will look like:
 
 For single map files:
 ```bash
-npm run parse -p <path-to-project-file> -m <path-to-map-file> -o <path-to-output-file>
+npm start -- -p <path-to-project-file> -m <path-to-map-file> -o <path-to-output-file>
 ```
 
 For multiple map files (batch mode):
 ```bash
-npm run parse -b <path-to-project-directory> -o <path-to-output-directory>
+npm start -- -b <path-to-project-directory> -o <path-to-output-directory>
 ```
 
 To use in your code:
-```javascript
-import * as TiledProjectParser from 'tiled-project-parser';
-import * as TiledMapParser from 'tiled-map-parser';
+```typescript
+import { TiledProjectParser, TiledMapParser, type TiledProjectParsedResult, type TiledMapParsedResult } from 'tiled-property-flattener';
 
 // Assuming you have the `projectFileData` ready as a JSON object...
 const parsedProject = TiledProjectParser.parse(projectFileData);
