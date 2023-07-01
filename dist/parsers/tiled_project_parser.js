@@ -26,6 +26,5 @@ export function parse(jsonProjectFileData) {
     tiledClassToMembersMap.forEach((members, className) => {
         flattener.flattenMembers(className, members);
     });
-    console.log('Memoised: ', flattener.memoisedFlattenedProperties);
     return new TiledProjectParsedResult(flattener);
 }

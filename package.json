@@ -18,7 +18,7 @@
     "JSON",
     "Parser"
   ],
-  "author": "rui-han-crh",
+  "author": "Chen Ruihan (rui-han-crh)",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^20.3.2",

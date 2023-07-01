@@ -87,9 +87,12 @@ export class Flattener {
     */
     flattenMemberProperty(member) {
         var _a;
-        // This is very strange:
-        // the propertyType is sometimes called `propertyType` (in project file)
-        // and sometimes `propertytype` (in map file).
+        // Bjorn has confirmed that the following was intentional:
+        // The property type key is sometimes called `propertyType` (in project file) and sometimes
+        // `propertytype` (in map file).
+        // This is because propertytype historically always was in lowercase following the tmx format,
+        // a decision he changed his mind about later on when he wrote the project file format.
+        // See: https://discord.com/channels/524610627545595904/524610627545595906/1123535538264215583
         const propertyType = (_a = member.propertyType) !== null && _a !== void 0 ? _a : member.propertytype;
         // Check if the member is a class.
         if (member.type === 'class') {

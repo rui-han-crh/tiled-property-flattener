@@ -16,22 +16,6 @@ export default class TiledProjectParsedResult {
      *  mapping the property key to the property value.
      */
     public flattenPropertiesOnObject (object: any): BasicProperties {
-        if (object.id === 4) {
-            console.log(object);
-            console.log({
-                // The parent class is called `class` in layers, but `type` in objects.
-                // Layers also have a `type` property, but it is irrelevant to us.
-                // Objects do not have a `class` property, so it falls through to `type`.
-                ...this.flattener.memoisedFlattenedProperties.get(object.class ?? object.type),
-                ...object.properties?.reduce((acc: any, property: any) => (
-                    { ...acc, ...this.flattener.flattenMemberProperty(property) }
-                ), {}),
-                name: object.name,
-                id: object.id,
-                x: object.x,
-                y: object.y
-            });
-        }
         return {
             // The parent class is called `class` in layers, but `type` in objects.
             // Layers also have a `type` property, but it is irrelevant to us.
@@ -45,5 +29,17 @@ export default class TiledProjectParsedResult {
             x: object.x,
             y: object.y
         };
+    }
+
+    /**
+     * Gets a copy of the flattened properties of the given class, where the keys are the property names
+     * and each mapped object value is a copy of the original.
+     */
+    public getCustomTypesMap (): ReadonlyMap<string, any> {
+        return new Map(
+            [...this.flattener.memoisedFlattenedProperties.entries()].map(([className, properties]) => (
+                [className, { ...properties }]
+            ))
+        );
     }
 }
