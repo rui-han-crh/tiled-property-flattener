@@ -52,11 +52,13 @@
                              "vehicle":
                                 {
                                  "amountOfFuelLeft":10000,
-                                 "canFly":true,
                                  "colour":"White",
-                                 "number_of_wheels":6,
-                                 "vehicleUsage":"Transport",
-                                 "weight":41140
+                                 "matter":
+                                    {
+                                     "weight":41140
+                                    },
+                                 "numberOfWheels":6,
+                                 "vehicleUsage":"Transport"
                                 }
                             }
                         }],
@@ -74,6 +76,15 @@
                  "point":true,
                  "properties":[
                         {
+                         "name":"@composite:engineA",
+                         "propertytype":"Engine",
+                         "type":"class",
+                         "value":
+                            {
+                             "numberOfCylinders":62
+                            }
+                        }, 
+                        {
                          "name":"plane",
                          "propertytype":"Plane",
                          "type":"class",
@@ -82,12 +93,14 @@
                              "isFlying":true,
                              "vehicle":
                                 {
-                                 "amountOfFuelLeft":8210.3,
-                                 "canFly":true,
+                                 "amountOfFuelLeft":8150.9,
                                  "colour":"White",
-                                 "number_of_wheels":6,
-                                 "vehicleUsage":"Transport",
-                                 "weight":41140
+                                 "matter":
+                                    {
+                                     "weight":41140
+                                    },
+                                 "numberOfWheels":6,
+                                 "vehicleUsage":"Transport"
                                 }
                             }
                         }],
@@ -103,29 +116,6 @@
                  "id":4,
                  "name":"audiA4",
                  "point":true,
-                 "properties":[
-                        {
-                         "name":"car",
-                         "propertytype":"Car",
-                         "type":"class",
-                         "value":
-                            {
-                             "motorVehicle":
-                                {
-                                 "@composite:engine":
-                                    {
-                                     "number_of_cylinders":4
-                                    },
-                                 "vehicle":
-                                    {
-                                     "amountOfFuelLeft":1023.71,
-                                     "number_of_wheels":4,
-                                     "vehicleUsage":"Racing,Transport",
-                                     "weight":1554
-                                    }
-                                }
-                            }
-                        }],
                  "rotation":0,
                  "type":"AudiA4",
                  "visible":true,
@@ -147,13 +137,12 @@
                             {
                              "@composite:engine":
                                 {
-                                 "number_of_cylinders":4
+                                 "numberOfCylinders":4
                                 },
                              "vehicle":
                                 {
                                  "amountOfFuelLeft":150.9,
                                  "colour":"Green",
-                                 "number_of_wheels":4,
                                  "vehicleUsage":"Racing,Transport",
                                  "weight":1397
                                 }
@@ -180,13 +169,12 @@
                             {
                              "@composite:engine":
                                 {
-                                 "number_of_cylinders":8
+                                 "numberOfCylinders":8
                                 },
                              "vehicle":
                                 {
                                  "amountOfFuelLeft":230.378,
                                  "colour":"Yellow",
-                                 "number_of_wheels":4,
                                  "vehicleUsage":"OffRoad",
                                  "weight":3500
                                 }

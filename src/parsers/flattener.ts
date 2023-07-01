@@ -1,15 +1,19 @@
-import { COMPOSITE_PREFIX } from './tiled_constants.js';
+import { COMPOSITE_PREFIX } from './tiled_constants';
 
 /**
  * Offers a way to flatten a nested JSON structure.
  * This is used to mimic inheritance and composition in Tiled.
  */
 export class Flattener {
+    /**
+     * Tracks the flattened properties of each class, so that we don't have to recompute them
+     * when we encounter the same class again.
+     */
     private readonly memoiser = new Map<string, any>();
 
     constructor (
         private readonly tiledClassToMembersMap: ReadonlyMap<string, any>,
-        private readonly enumNameToValuesMap: ReadonlyMap<string, ReadonlySet<string>>
+        public readonly enumNameToValuesMap: ReadonlyMap<string, ReadonlySet<string>>
     ) {}
 
     /**
@@ -154,7 +158,7 @@ export class Flattener {
 }
 
 /**
- * This is a inner recursive function that will flatten a `value` key of a member.
+ * This is a recursive function that will flatten a `value` key of a member.
  *
  * This function is used if the structure looks like this:
  * ```json

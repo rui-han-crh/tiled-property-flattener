@@ -1,9 +1,9 @@
 import minimist from 'minimist';
-import * as TiledProjectParser from './parsers/tiled_project_parser.js';
-import * as TiledMapParser from './parsers/tiled_map_parser.js';
+import * as TiledProjectParser from './parsers/tiled_project_parser';
+import * as TiledMapParser from './parsers/tiled_map_parser';
 import * as fs from 'fs';
-import type TiledProjectParsedResult from './parsers/tiled_project_parsed_result.js';
-import type TiledMapParsedResult from './parsers/tiled_map_parsed_result.js';
+import type TiledProjectParsedResult from './parsers/tiled_project_parsed_result';
+import type TiledMapParsedResult from './parsers/tiled_map_parsed_result';
 
 function parseProjectFile (projectFilePath: string): TiledProjectParsedResult {
     const projectFileData = JSON.parse(fs.readFileSync(projectFilePath, 'utf8'));
@@ -45,7 +45,7 @@ if (tiledFolderPath !== undefined) {
     }
 
     // Parse the project file.
-    const parsedProject = parseProjectFile(`${tiledFolderPath}/${projectFile as string}`);
+    const parsedProject = parseProjectFile(`${tiledFolderPath}/${projectFile}`);
 
     // For every map file in the folder, which is every file that ends with `.json`...
     fs.readdirSync(tiledFolderPath).filter((file) => file.endsWith('.json')).forEach(
@@ -54,7 +54,7 @@ if (tiledFolderPath !== undefined) {
             const parsedMap = parseMapFile(`${tiledFolderPath}/${mapFile}`, parsedProject);
 
             // Create the output folder if it doesn't exist.
-            if (fs.existsSync(outputFolderPath) === false) {
+            if (!fs.existsSync(outputFolderPath)) {
                 fs.mkdirSync(outputFolderPath);
             }
 

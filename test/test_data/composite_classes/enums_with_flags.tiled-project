@@ -1,0 +1,343 @@
+{
+    "automappingRulesFile": "",
+    "commands": [
+    ],
+    "compatibilityVersion": 1100,
+    "extensionsPath": "extensions",
+    "folders": [
+        "."
+    ],
+    "propertyTypes": [
+        {
+            "id": 14,
+            "name": "Gender",
+            "storageType": "string",
+            "type": "enum",
+            "values": [
+                "Male",
+                "Female"
+            ],
+            "valuesAsFlags": false
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 16,
+            "members": [
+                {
+                    "name": "professor",
+                    "propertyType": "Professor",
+                    "type": "class",
+                    "value": {
+                        "currentTeachingModule": "CS2030S,CS2101,CS2102",
+                        "officeAddress": "15 Computing Dr, Singapore 117418, #15-02",
+                        "person": {
+                            "gender": "Female"
+                        }
+                    }
+                }
+            ],
+            "name": "Hailey",
+            "type": "class",
+            "useAs": [
+                "property",
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset"
+            ]
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 19,
+            "members": [
+                {
+                    "name": "labTeachingAssistant",
+                    "propertyType": "LabTeachingAssistant",
+                    "type": "class",
+                    "value": {
+                        "teachingAssistant": {
+                            "currentTeachingModule": "CS2030S"
+                        }
+                    }
+                },
+                {
+                    "name": "person",
+                    "propertyType": "Person",
+                    "type": "class",
+                    "value": {
+                    }
+                }
+            ],
+            "name": "Jonathan",
+            "type": "class",
+            "useAs": [
+                "property",
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset"
+            ]
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 17,
+            "members": [
+                {
+                    "name": "teachingAssistant",
+                    "propertyType": "TeachingAssistant",
+                    "type": "class",
+                    "value": {
+                    }
+                }
+            ],
+            "name": "LabTeachingAssistant",
+            "type": "class",
+            "useAs": [
+                "property",
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset"
+            ]
+        },
+        {
+            "id": 12,
+            "name": "Module",
+            "storageType": "string",
+            "type": "enum",
+            "values": [
+                "CS1010X",
+                "CS2030S",
+                "CS2040S",
+                "CS2103T",
+                "CS2101",
+                "CS2102",
+                "MA1521",
+                "MA2001"
+            ],
+            "valuesAsFlags": true
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 7,
+            "members": [
+                {
+                    "name": "gender",
+                    "propertyType": "Gender",
+                    "type": "string",
+                    "value": "Male"
+                }
+            ],
+            "name": "Person",
+            "type": "class",
+            "useAs": [
+                "property",
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset"
+            ]
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 9,
+            "members": [
+                {
+                    "name": "currentTeachingModule",
+                    "propertyType": "Module",
+                    "type": "string",
+                    "value": ""
+                },
+                {
+                    "name": "officeAddress",
+                    "type": "string",
+                    "value": ""
+                },
+                {
+                    "name": "person",
+                    "propertyType": "Person",
+                    "type": "class",
+                    "value": {
+                    }
+                }
+            ],
+            "name": "Professor",
+            "type": "class",
+            "useAs": [
+                "property",
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset"
+            ]
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 20,
+            "members": [
+                {
+                    "name": "person",
+                    "propertyType": "Person",
+                    "type": "class",
+                    "value": {
+                        "gender": "Female"
+                    }
+                },
+                {
+                    "name": "tutorialTeachingAssistant",
+                    "propertyType": "TutorialTeachingAssistant",
+                    "type": "class",
+                    "value": {
+                        "teachingAssistant": {
+                            "currentTeachingModule": "CS1010X,CS2103T"
+                        }
+                    }
+                }
+            ],
+            "name": "Rachel",
+            "type": "class",
+            "useAs": [
+                "property",
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset"
+            ]
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 8,
+            "members": [
+                {
+                    "name": "person",
+                    "propertyType": "Person",
+                    "type": "class",
+                    "value": {
+                    }
+                }
+            ],
+            "name": "Student",
+            "type": "class",
+            "useAs": [
+                "property",
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset"
+            ]
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 10,
+            "members": [
+                {
+                    "name": "currentTeachingModule",
+                    "propertyType": "Module",
+                    "type": "string",
+                    "value": ""
+                }
+            ],
+            "name": "TeachingAssistant",
+            "type": "class",
+            "useAs": [
+                "property",
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset"
+            ]
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 15,
+            "members": [
+                {
+                    "name": "student",
+                    "propertyType": "Student",
+                    "type": "class",
+                    "value": {
+                    }
+                },
+                {
+                    "name": "teachingAssistant",
+                    "propertyType": "TeachingAssistant",
+                    "type": "class",
+                    "value": {
+                        "currentTeachingModule": "CS1010X,CS2030S,CS2102,MA1521"
+                    }
+                }
+            ],
+            "name": "Thomas",
+            "type": "class",
+            "useAs": [
+                "property",
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset"
+            ]
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 18,
+            "members": [
+                {
+                    "name": "teachingAssistant",
+                    "propertyType": "TeachingAssistant",
+                    "type": "class",
+                    "value": {
+                    }
+                }
+            ],
+            "name": "TutorialTeachingAssistant",
+            "type": "class",
+            "useAs": [
+                "property",
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset"
+            ]
+        }
+    ]
+}

@@ -1,5 +1,5 @@
-import { Flattener } from './flattener.js';
-import TiledProjectParsedResult from './tiled_project_parsed_result.js';
+import { Flattener } from './flattener';
+import TiledProjectParsedResult from './tiled_project_parsed_result';
 
 /**
  * Parses a Tiled project file.

@@ -1,5 +1,5 @@
-import type BasicProperties from '../basic_properties.js';
-import { type Flattener } from './flattener.js';
+import type BasicProperties from '../basic_properties';
+import { type Flattener } from './flattener';
 
 export default class TiledProjectParsedResult {
     constructor (
@@ -39,6 +39,18 @@ export default class TiledProjectParsedResult {
         return new Map(
             [...this.flattener.memoisedFlattenedProperties.entries()].map(([className, properties]) => (
                 [className, { ...properties }]
+            ))
+        );
+    }
+
+    /**
+     * Gets a copy of the enums and their values, where the keys are the enum names
+     * and its mapped value is a Set of the enum values.
+     */
+    public getEnums (): ReadonlyMap<string, ReadonlySet<string | number>> {
+        return new Map(
+            [...this.flattener.enumNameToValuesMap.entries()].map(([enumName, enumValues]) => (
+                [enumName, new Set(enumValues)]
             ))
         );
     }

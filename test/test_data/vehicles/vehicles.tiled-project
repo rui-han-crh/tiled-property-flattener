@@ -20,15 +20,16 @@
                     "value": {
                         "motorVehicle": {
                             "@composite:engine": {
-                                "number_of_cylinders": 4
+                                "numberOfCylinders": 4
                             },
                             "vehicle": {
+                                "amountOfFuelLeft": 150,
                                 "matter": {
-                                    "weight": 1550
+                                    "weight": 1500
                                 },
+                                "numberOfWheels": 4,
                                 "number_of_wheels": 4,
-                                "vehicleUsage": "Racing,Transport",
-                                "weight": 1555
+                                "vehicleUsage": "Racing,Transport"
                             }
                         }
                     }
@@ -57,7 +58,7 @@
                     "propertyType": "Engine",
                     "type": "class",
                     "value": {
-                        "number_of_cylinders": 64
+                        "numberOfCylinders": 64
                     }
                 },
                 {
@@ -65,7 +66,7 @@
                     "propertyType": "Engine",
                     "type": "class",
                     "value": {
-                        "number_of_cylinders": 64
+                        "numberOfCylinders": 64
                     }
                 },
                 {
@@ -74,14 +75,12 @@
                     "type": "class",
                     "value": {
                         "vehicle": {
-                            "canFly": true,
                             "colour": "White",
                             "matter": {
                                 "weight": 41140
                             },
-                            "number_of_wheels": 6,
-                            "vehicleUsage": "Transport",
-                            "weight": 41140
+                            "numberOfWheels": 6,
+                            "vehicleUsage": "Transport"
                         }
                     }
                 }
@@ -110,6 +109,7 @@
                     "type": "class",
                     "value": {
                         "vehicle": {
+                            "numberOfWheels": 4,
                             "number_of_wheels": 4
                         }
                     }
@@ -210,7 +210,7 @@
                     }
                 },
                 {
-                    "name": "number_of_cylinders",
+                    "name": "numberOfCylinders",
                     "type": "int",
                     "value": 0
                 }
@@ -311,7 +311,6 @@
                     "propertyType": "Vehicle",
                     "type": "class",
                     "value": {
-                        "canFly": true
                     }
                 }
             ],
@@ -398,7 +397,7 @@
                     }
                 },
                 {
-                    "name": "number_of_wheels",
+                    "name": "numberOfWheels",
                     "type": "int",
                     "value": 0
                 },

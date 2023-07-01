@@ -63,6 +63,8 @@ const parsedProject = TiledProjectParser.parse(projectFileData);
 // You can read the properties of the custom types,
 // which is map of the custom type name to its flattened properties.
 console.log("Project types:", parsedProject.getCustomTypes());
+// You can also read the enums, which are a map of the enum name to a Set of its values.
+console.log("Project enums:", parsedProject.getEnums());
 
 // Assuming you have the `mapFileData` ready as a JSON object...
 const parsedMap = TiledMapParser.parse(mapFileData, parsedProject);

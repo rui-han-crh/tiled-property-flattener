@@ -1,5 +1,5 @@
-import TiledMapParsedResult from './tiled_map_parsed_result.js';
-import type TiledProjectParsedResult from './tiled_project_parsed_result.js';
+import TiledMapParsedResult from './tiled_map_parsed_result';
+import type TiledProjectParsedResult from './tiled_project_parsed_result';
 
 /**
  * Parses the given json data into a TiledMapParsedResult, referencing the project defined

@@ -1,0 +1,138 @@
+{
+    "automappingRulesFile": "",
+    "commands": [
+    ],
+    "compatibilityVersion": 1100,
+    "extensionsPath": "extensions",
+    "folders": [
+        "."
+    ],
+    "propertyTypes": [
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 1,
+            "members": [
+                {
+                    "name": "hasFur",
+                    "type": "bool",
+                    "value": false
+                },
+                {
+                    "name": "laysEggs",
+                    "type": "bool",
+                    "value": false
+                },
+                {
+                    "name": "numberOfLegs",
+                    "type": "int",
+                    "value": 0
+                }
+            ],
+            "name": "Animal",
+            "type": "class",
+            "useAs": [
+                "property",
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset"
+            ]
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 3,
+            "members": [
+                {
+                    "name": "mammal",
+                    "propertyType": "Mammal",
+                    "type": "class",
+                    "value": {
+                        "usesEcholocation": true
+                    }
+                },
+                {
+                    "name": "wingedAnimal",
+                    "propertyType": "WingedAnimal",
+                    "type": "class",
+                    "value": {
+                        "numberOfWings": 2
+                    }
+                }
+            ],
+            "name": "Bat",
+            "type": "class",
+            "useAs": [
+                "property",
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset"
+            ]
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 2,
+            "members": [
+                {
+                    "name": "animal",
+                    "propertyType": "Animal",
+                    "type": "class",
+                    "value": {
+                        "hasFur": true,
+                        "numberOfLegs": 4
+                    }
+                },
+                {
+                    "name": "usesEcholocation",
+                    "type": "bool",
+                    "value": false
+                }
+            ],
+            "name": "Mammal",
+            "type": "class",
+            "useAs": [
+                "property",
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset"
+            ]
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 5,
+            "members": [
+                {
+                    "name": "numberOfWings",
+                    "type": "int",
+                    "value": 0
+                }
+            ],
+            "name": "WingedAnimal",
+            "type": "class",
+            "useAs": [
+                "property",
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset"
+            ]
+        }
+    ]
+}
