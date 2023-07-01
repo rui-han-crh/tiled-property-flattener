@@ -1,19 +1,16 @@
 import minimist from 'minimist';
-import * as TiledProjectParser from './parsers/tiled_project_parser';
-import * as TiledMapParser from './parsers/tiled_map_parser';
 import * as fs from 'fs';
-import type TiledProjectParsedResult from './parsers/tiled_project_parsed_result';
-import type TiledMapParsedResult from './parsers/tiled_map_parsed_result';
+import * as TiledPropertyFlattener from './dist/tiled_property_flattener.min.js';
 
-function parseProjectFile (projectFilePath: string): TiledProjectParsedResult {
+const { TiledProjectParser, TiledMapParser } = TiledPropertyFlattener;
+
+function parseProjectFile (projectFilePath) {
     const projectFileData = JSON.parse(fs.readFileSync(projectFilePath, 'utf8'));
 
     return TiledProjectParser.parse(projectFileData);
 }
 
-function parseMapFile (
-    mapFilePath: string, parsedProject: TiledProjectParsedResult
-): TiledMapParsedResult {
+function parseMapFile (mapFilePath, parsedProject) {
     const mapFileData = JSON.parse(fs.readFileSync(mapFilePath, 'utf8'));
 
     return TiledMapParser.parse(mapFileData, parsedProject);
@@ -23,7 +20,7 @@ function parseMapFile (
 const args = minimist(process.argv.slice(2));
 
 // Check if batch mode is enabled and take the folder path.
-const tiledFolderPath: string = args.batch ?? args.b;
+const tiledFolderPath = args.batch ?? args.b;
 
 if (tiledFolderPath !== undefined) {
     // Get the project file, which is the first file in the folder that ends with `.tiled-project`.
@@ -36,7 +33,7 @@ if (tiledFolderPath !== undefined) {
     }
 
     // Get the output folder path.
-    const outputFolderPath: string = args.output ?? args.o;
+    const outputFolderPath = args.output ?? args.o;
 
     if (outputFolderPath === undefined) {
         console.log('No output folder specified. Please specify an output folder with the `-o` flag.');
@@ -49,7 +46,7 @@ if (tiledFolderPath !== undefined) {
 
     // For every map file in the folder, which is every file that ends with `.json`...
     fs.readdirSync(tiledFolderPath).filter((file) => file.endsWith('.json')).forEach(
-        (mapFile: string) => {
+        (mapFile) => {
             // Parse it against the project file.
             const parsedMap = parseMapFile(`${tiledFolderPath}/${mapFile}`, parsedProject);
 
