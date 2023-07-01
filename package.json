@@ -1,10 +1,9 @@
 {
   "name": "tiled-property-flattener",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "Flattens the properties of the Tiled classes contained by any Tiled class, or Tiled object/layer, into the Tiled class's/object's/layer's own properties, as if it had inherited the properties. This allows easy access to each asset's custom properties. Additionally, allows the user to mark classes as being composite via the `@composite:` prefix to retain composition.",  
-  "main": "dist/tiled-property-flattener.js",
-  "module": "dist/tiled-property-flattener.mjs",
-  "types": "dist/tiled-property-flattener.d.ts",
+  "main": "dist/tiled_property_flattener.min.js",
+  "types": "dist/tiled_property_flattener.d.ts",
   "type": "module",
   "scripts": {
     "start": "node ./flatten_cli.js",
