@@ -71,8 +71,6 @@ else {
     const projectParsedResult = parseProjectFile(projectFilePath);
     // Then, parse the map file, referencing the project parsed result.
     const mapParsedResult = parseMapFile(mapFilePath, projectParsedResult);
-    console.log(mapParsedResult.getLayerIdToPropertiesMap());
-    console.log(mapParsedResult.getObjectIdToPropertiesMap());
     // Write the parsed result to the output file.
     fs.writeFileSync(outputFile, mapParsedResult.toJson());
     console.log('Done!');

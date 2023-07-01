@@ -28,16 +28,18 @@
     "objects": {
         "1": {
             "engineA": {
-                "number_of_cylinders": 64
+                "number_of_cylinders": 64,
+                "weight": 150
             },
             "engineB": {
-                "number_of_cylinders": 64
+                "number_of_cylinders": 64,
+                "weight": 150
             },
-            "weight": 41140,
             "vehicleUsage": [
                 "Transport"
             ],
             "number_of_wheels": 6,
+            "weight": 41140,
             "colour": [
                 "White"
             ],
@@ -51,16 +53,18 @@
         },
         "2": {
             "engineA": {
-                "number_of_cylinders": 64
+                "number_of_cylinders": 64,
+                "weight": 150
             },
             "engineB": {
-                "number_of_cylinders": 64
+                "number_of_cylinders": 64,
+                "weight": 150
             },
-            "weight": 41140,
             "vehicleUsage": [
                 "Transport"
             ],
             "number_of_wheels": 6,
+            "weight": 41140,
             "colour": [
                 "White"
             ],
@@ -73,12 +77,12 @@
             "y": 50.5
         },
         "4": {
-            "weight": 1554,
             "vehicleUsage": [
                 "Racing",
                 "Transport"
             ],
             "number_of_wheels": 4,
+            "weight": 1554,
             "colour": [
                 "Red"
             ],
@@ -92,12 +96,12 @@
             "y": 113.5
         },
         "5": {
-            "weight": 1397,
             "vehicleUsage": [
                 "Racing",
                 "Transport"
             ],
             "number_of_wheels": 4,
+            "weight": 1397,
             "colour": [
                 "Green"
             ],
@@ -111,11 +115,11 @@
             "y": 147.5
         },
         "6": {
-            "weight": 3500,
             "vehicleUsage": [
                 "OffRoad"
             ],
             "number_of_wheels": 4,
+            "weight": 3500,
             "colour": [
                 "Yellow"
             ],
@@ -129,17 +133,18 @@
             "y": 273
         },
         "7": {
-            "weight": 0,
             "vehicleUsage": [
                 ""
             ],
             "number_of_wheels": 4,
+            "weight": 0,
             "colour": [
                 "Red"
             ],
             "amountOfFuelLeft": 0,
             "engine": {
-                "number_of_cylinders": 0
+                "number_of_cylinders": 0,
+                "weight": 150
             },
             "name": "genericCar",
             "id": 7,

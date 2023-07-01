@@ -23,6 +23,9 @@
                                 "number_of_cylinders": 4
                             },
                             "vehicle": {
+                                "matter": {
+                                    "weight": 1550
+                                },
                                 "number_of_wheels": 4,
                                 "vehicleUsage": "Racing,Transport",
                                 "weight": 1555
@@ -73,6 +76,9 @@
                         "vehicle": {
                             "canFly": true,
                             "colour": "White",
+                            "matter": {
+                                "weight": 41140
+                            },
                             "number_of_wheels": 6,
                             "vehicleUsage": "Transport",
                             "weight": 41140
@@ -134,6 +140,9 @@
                     "value": {
                         "vehicle": {
                             "colour": "Blue",
+                            "matter": {
+                                "weight": 200
+                            },
                             "number_of_wheels": 4,
                             "vehicleUsage": "Transport",
                             "weight": 200
@@ -193,6 +202,14 @@
             "id": 8,
             "members": [
                 {
+                    "name": "matter",
+                    "propertyType": "Matter",
+                    "type": "class",
+                    "value": {
+                        "weight": 150
+                    }
+                },
+                {
                     "name": "number_of_cylinders",
                     "type": "int",
                     "value": 0
@@ -221,6 +238,30 @@
                 "Safe"
             ],
             "valuesAsFlags": false
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 16,
+            "members": [
+                {
+                    "name": "weight",
+                    "type": "float",
+                    "value": 0
+                }
+            ],
+            "name": "Matter",
+            "type": "class",
+            "useAs": [
+                "property",
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset"
+            ]
         },
         {
             "color": "#ffa0a0a4",
@@ -350,6 +391,13 @@
                     "value": "Red"
                 },
                 {
+                    "name": "matter",
+                    "propertyType": "Matter",
+                    "type": "class",
+                    "value": {
+                    }
+                },
+                {
                     "name": "number_of_wheels",
                     "type": "int",
                     "value": 0
@@ -359,11 +407,6 @@
                     "propertyType": "VehicleUsage",
                     "type": "string",
                     "value": ""
-                },
-                {
-                    "name": "weight",
-                    "type": "int",
-                    "value": 0
                 }
             ],
             "name": "Vehicle",

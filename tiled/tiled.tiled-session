@@ -39,7 +39,7 @@
     "openFiles": [
     ],
     "project": "tiled.tiled-project",
-    "property.type": "float",
+    "property.type": "Matter",
     "recentFiles": [
         "map2.json"
     ]
