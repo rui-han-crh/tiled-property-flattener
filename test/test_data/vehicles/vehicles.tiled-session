@@ -1,18 +1,21 @@
 {
-    "activeFile": "",
+    "activeFile": "map1.json",
     "expandedProjectPaths": [
+        "."
     ],
+    "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
         "map1.json": {
             "scale": 2.3334374999999996,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 157.92152136065357,
-                "y": 157.92152136065357
+                "x": 157.4929690638811,
+                "y": 157.4929690638811
             }
         }
     },
     "openFiles": [
+        "map1.json"
     ],
     "project": "vehicles.tiled-project",
     "property.type": "Plane",

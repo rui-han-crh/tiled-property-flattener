@@ -35,6 +35,7 @@ then parses all the objects in the map and flattens its properties.
     expect(objectIdToPropertiesMap.get(1)).toEqual({
         name: 'boeing737',
         id: 1,
+        class: 'Boeing737',
         x: 144.50,
         y: 19.00,
         engineA: {

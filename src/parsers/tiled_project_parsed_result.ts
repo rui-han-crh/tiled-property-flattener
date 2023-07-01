@@ -26,6 +26,7 @@ export default class TiledProjectParsedResult {
             ), {}),
             name: object.name,
             id: object.id,
+            class: object.class ?? object.type ?? null,
             x: object.x,
             y: object.y
         };

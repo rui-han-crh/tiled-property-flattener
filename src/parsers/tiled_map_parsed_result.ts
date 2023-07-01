@@ -1,16 +1,18 @@
+import BasicProperties from "../basic_properties";
+
 export default class TiledMapParsedResult {
     constructor (
-        private readonly layerIdToPropertiesMap: ReadonlyMap<number, any>,
-        private readonly objectIdToPropertiesMap: ReadonlyMap<number, any>
+        private readonly layerIdToPropertiesMap: ReadonlyMap<number, BasicProperties>,
+        private readonly objectIdToPropertiesMap: ReadonlyMap<number, BasicProperties>
     ) {
     }
 
     /**
      * Gets a copy of the objectIdToObjectMap.
      */
-    public getObjectIdToPropertiesMap (): ReadonlyMap<number, any> {
+    public getObjectIdToPropertiesMap (): ReadonlyMap<number, BasicProperties> {
         // Copy a new map of the properties, deep copying the properties.
-        const clonedIdToPropertiesMap: ReadonlyMap<number, any> = new Map<number, any>(
+        const clonedIdToPropertiesMap: ReadonlyMap<number, BasicProperties> = new Map(
             Array.from(this.objectIdToPropertiesMap.entries())
                 .map(([id, object]) => [id, object])
         );
@@ -21,9 +23,9 @@ export default class TiledMapParsedResult {
     /**
      * Gets a copy of the layerIdToPropertiesMap.
      */
-    public getLayerIdToPropertiesMap (): ReadonlyMap<number, any> {
+    public getLayerIdToPropertiesMap (): ReadonlyMap<number, BasicProperties> {
         // Copy a new map of the properties, deep copying the properties.
-        const clonedIdToPropertiesMap: ReadonlyMap<number, any> = new Map<number, any>(
+        const clonedIdToPropertiesMap: ReadonlyMap<number, BasicProperties> = new Map(
             Array.from(this.layerIdToPropertiesMap.entries())
                 .map(([id, object]) => [id, object])
         );
