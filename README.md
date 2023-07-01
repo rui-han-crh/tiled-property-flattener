@@ -2,6 +2,8 @@
 
 This package provides an easy way to parse information from the Tiled project file and the Tiled map files.
 
+It also provides a way to mimic object-oriented inheritance and composition in Tiled custom types. The output of each parsed object is a flattened object that contains all the properties of the object, including the properties of the custom types that the object inherits from.
+
 ## Problem
 
 In the Tiled program, data is saved separately:
