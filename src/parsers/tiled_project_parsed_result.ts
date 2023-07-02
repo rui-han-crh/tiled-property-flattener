@@ -1,4 +1,6 @@
-import type BasicProperties from '../basic_properties';
+import { cloneDeep } from 'lodash';
+import type BasicProperties from '../properties/basic_properties';
+import BasicTileProperties from '../properties/basic_tile_properties';
 import { type Flattener } from './flattener';
 
 export default class TiledProjectParsedResult {
@@ -33,13 +35,32 @@ export default class TiledProjectParsedResult {
     }
 
     /**
-     * Gets a copy of the flattened properties of the given class, where the keys are the property names
-     * and each mapped object value is a copy of the original.
+     * Flatten the properties of a Tiled tile.
+     *
+     * @param tile The tileset tile to flatten the properties of.
+     * @returns An object literal of the flattened properties,
+     *  mapping the property key to the property value.
+     */
+    public flattenPropertiesOnTile (tile: any): BasicTileProperties {
+        return {
+            ...this.flattener.memoisedFlattenedProperties.get(tile.class ?? tile.type),
+            ...tile.properties?.reduce((acc: any, property: any) => (
+                { ...acc, ...this.flattener.flattenMemberProperty(property) }
+            ), {}),
+            id: tile.id,
+            class: tile.class ?? tile.type ?? null
+        }
+    }
+
+
+    /**
+     * Gets a copy of the flattened properties of the given class, where the keys are type names
+     * and each mapped value is a copy of the original properties.
      */
     public getCustomTypesMap (): ReadonlyMap<string, any> {
         return new Map(
             [...this.flattener.memoisedFlattenedProperties.entries()].map(([className, properties]) => (
-                [className, { ...properties }]
+                [className, cloneDeep(properties)]
             ))
         );
     }

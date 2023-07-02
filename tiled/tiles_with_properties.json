@@ -1,0 +1,90 @@
+{
+    "layers": {
+        "2": {
+            "name": "Objects",
+            "id": 2,
+            "class": "objectgroup",
+            "x": 0,
+            "y": 0
+        },
+        "3": {
+            "name": "Background",
+            "id": 3,
+            "class": "tilelayer",
+            "x": 0,
+            "y": 0
+        }
+    },
+    "objects": {
+        "1": {
+            "vehicleUsage": [
+                "OffRoad",
+                "Racing"
+            ],
+            "numberOfWheels": 0,
+            "weight": 0,
+            "colour": [
+                "Red"
+            ],
+            "amountOfFuelLeft": 0,
+            "engine": {
+                "numberOfCylinders": 0,
+                "weight": 150
+            },
+            "number_of_wheels": 4,
+            "name": "testCar",
+            "id": 1,
+            "class": "Car",
+            "x": 143.993571715548,
+            "y": 115.709120128566
+        }
+    },
+    "tilesets": {
+        "1": {
+            "columns": 4,
+            "firstgid": 1,
+            "image": "template-tileset.png",
+            "imageheight": 128,
+            "imagewidth": 128,
+            "margin": 0,
+            "name": "template-tileset",
+            "spacing": 0,
+            "tilecount": 16,
+            "tileheight": 32,
+            "tilewidth": 32,
+            "tiles": {
+                "0": {
+                    "vehicleUsage": [
+                        "OffRoad"
+                    ],
+                    "numberOfWheels": 4,
+                    "weight": 3501.7,
+                    "colour": [
+                        "Yellow"
+                    ],
+                    "amountOfFuelLeft": 0,
+                    "engine": {
+                        "numberOfCylinders": 8,
+                        "weight": 150
+                    },
+                    "id": 0,
+                    "class": "MotorVehicle"
+                }
+            }
+        },
+        "17": {
+            "columns": 4,
+            "firstgid": 17,
+            "image": "template-tileset.png",
+            "imageheight": 128,
+            "imagewidth": 128,
+            "margin": 0,
+            "name": "template-tileset",
+            "spacing": 0,
+            "tilecount": 16,
+            "tileheight": 32,
+            "tilewidth": 32,
+            "tiles": {}
+        }
+    }
+}

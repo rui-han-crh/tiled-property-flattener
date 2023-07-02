@@ -2,13 +2,12 @@
     "activeFile": "",
     "expandedProjectPaths": [
     ],
-    "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
     },
     "openFiles": [
     ],
-    "project": "inherited_classes.tiled-project",
-    "property.type": "Mammal",
+    "project": "default_composite_nested.tiled-project",
+    "property.type": "NutritionalValue",
     "recentFiles": [
     ]
 }

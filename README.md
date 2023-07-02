@@ -11,14 +11,21 @@ In the Tiled program, data is saved separately:
 - The map file contains information about the map itself, including the layers, tilesets, and objects, which may be of the custom types defined in the project file.
 
 The problem arises when you want to use the custom types in your game engine, such as within _Phaser_.
+
 _Phaser_ provides no easy way to read the project files, so you will need to parse both project and map files manually.
 
 Here is an example of an object with custom properties of a custom type defined in the project file:
 ![Custom Properties Example](images/custom-properties-example.png)
 
-In addition, types refer to each other via name, so resolving the references and overwritting the properties with the new properties defined on each object is a difficult task.
+The class field references a custom type declared in the project file.
 
-Lastly, Tiled does not provide a way to extend custom types. To retrieve a property from an object, one go through several nested properties, such as `audiA4.properties.car.motorVehicle.vehicle.amountofFuelLeft`. This is not ideal, as it is not intuitive to use, and it is not easy to refactor.
+In addition, when nesting types, if no custom property is overwritten, the value field of the nested type will be empty, as it assumes the default properties of the nested type referred to by name.
+
+![Empty Value in Nested Class](images/empty-value-in-nested-class.png)
+
+Resolving the references and overwritting the properties with the new properties defined on each object can be a tedious task.
+
+Lastly, Tiled does not provide a way to extend custom types. To retrieve a property from an object, one would have to go through several nested properties, such as `audiA4.properties.car.motorVehicle.vehicle.amountofFuelLeft`. This is not ideal, as it is not intuitive to use nor easy to refactor.
 
 ## Solution
 
@@ -38,21 +45,36 @@ In the above example, one can access the `amountOfFuelLeft` property of the `aud
 npm install tiled-property-flattener
 ```
 
+This project also supports TypeScript type definitions.
+
 ## Usage
 
-To preview what an object will look like:
+---
+
+To preview what the parsed map will look like:
+
+First, clone the project from GitHub and install the dependencies.
 
 For single map files:
 ```bash
 npm start -- -p <path-to-project-file> -m <path-to-map-file> -o <path-to-output-file>
 ```
+This will output a single JSON file containing the parsed map.
 
 For multiple map files (batch mode):
 ```bash
 npm start -- -b <path-to-project-directory> -o <path-to-output-directory>
 ```
+This will output a JSON file for each map file in the project directory to the specified output directory.
+
+---
 
 To use in your code:
+
+First, run the npm install command above.
+
+Then, import the package and use the parsers:
+
 ```typescript
 import { TiledProjectParser, TiledMapParser, type TiledProjectParsedResult, type TiledMapParsedResult } from 'tiled-property-flattener';
 
@@ -73,6 +95,8 @@ const parsedMap = TiledMapParser.parse(mapFileData, parsedProject);
 console.log(parsedMap.getObjectIdToPropertiesMap());
 
 console.log(parsedMap.getLayerIdToPropertiesMap());
+
+console.log(parsedMap.getTilesetIdToPropertiesMap());
 
 // Note: These accessors will copy the properties into a new object to prevent mutation, 
 // so you should cache the result if you need to access it multiple times.
@@ -96,3 +120,5 @@ When the properties are parsed and flattened, we get the following result:
 ![Parsed Result of Boeing737](images/parsed-result-of-boeing737.png)
 
 Note that all properties were flattened, except for the two engine marked with `@composite:`. However, as both engines extended from the the Matter class, the properties of the Matter parent class were flattened into each engine class.
+
+Additionally, enums would be represented by the Set data structure, but as this is a parsed array, it is shown as an array in the image above.

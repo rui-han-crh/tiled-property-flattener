@@ -1,0 +1,142 @@
+{
+    "automappingRulesFile": "",
+    "commands": [
+    ],
+    "compatibilityVersion": 1100,
+    "extensionsPath": "extensions",
+    "folders": [
+        "."
+    ],
+    "propertyTypes": [
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 1,
+            "members": [
+                {
+                    "name": "requiresOven",
+                    "type": "bool",
+                    "value": true
+                }
+            ],
+            "name": "BakingRecipe",
+            "type": "class",
+            "useAs": [
+                "property",
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset"
+            ]
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 2,
+            "members": [
+                {
+                    "name": "@inherit:bakingRecipe",
+                    "propertyType": "BakingRecipe",
+                    "type": "class",
+                    "value": {
+                    }
+                },
+                {
+                    "name": "bakingPowder",
+                    "propertyType": "Ingredient",
+                    "type": "class",
+                    "value": {
+                        "amountInGrams": 420
+                    }
+                },
+                {
+                    "name": "eggs",
+                    "propertyType": "Ingredient",
+                    "type": "class",
+                    "value": {
+                        "amountInGrams": 105
+                    }
+                },
+                {
+                    "name": "flour",
+                    "propertyType": "Ingredient",
+                    "type": "class",
+                    "value": {
+                        "amountInGrams": 360
+                    }
+                },
+                {
+                    "name": "milk",
+                    "propertyType": "Ingredient",
+                    "type": "class",
+                    "value": {
+                        "amountInGrams": 120
+                    }
+                },
+                {
+                    "name": "unsaltedButter",
+                    "propertyType": "Ingredient",
+                    "type": "class",
+                    "value": {
+                        "amountInGrams": 120
+                    }
+                },
+                {
+                    "name": "vanillaExtract",
+                    "propertyType": "Ingredient",
+                    "type": "class",
+                    "value": {
+                        "amountInGrams": 8.4
+                    }
+                },
+                {
+                    "name": "whiteSugar",
+                    "propertyType": "Ingredient",
+                    "type": "class",
+                    "value": {
+                        "amountInGrams": 240
+                    }
+                }
+            ],
+            "name": "CakeRecipe",
+            "type": "class",
+            "useAs": [
+                "property",
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset"
+            ]
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
+            "id": 3,
+            "members": [
+                {
+                    "name": "amountInGrams",
+                    "type": "float",
+                    "value": 0
+                }
+            ],
+            "name": "Ingredient",
+            "type": "class",
+            "useAs": [
+                "property",
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset"
+            ]
+        }
+    ]
+}

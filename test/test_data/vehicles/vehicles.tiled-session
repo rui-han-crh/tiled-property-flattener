@@ -1,25 +1,103 @@
 {
-    "activeFile": "map1.json",
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "objects_with_properties.json",
     "expandedProjectPaths": [
         "."
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
+        "layers_with_properties.json": {
+            "scale": 2.04546875,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 160.35444198304177,
+                "y": 160.10999923611644
+            }
+        },
+        "layers_with_properties_2.json": {
+            "scale": 2.04546875,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 160.35444198304177,
+                "y": 160.10999923611644
+            }
+        },
         "map1.json": {
+            "expandedObjectLayers": [
+                3
+            ],
             "scale": 2.3334374999999996,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 157.4929690638811,
-                "y": 157.4929690638811
+                "x": 135.8510780768716,
+                "y": 157.06441676710864
             }
+        },
+        "map2.json": {
+            "scale": 2.3334374999999996,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 101.78117048346058,
+                "y": 159.63573054774344
+            }
+        },
+        "map2.json#template-tileset": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "map3.json": {
+            "scale": 2.3334374999999996,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 139.27949645105133,
+                "y": 159.63573054774344
+            }
+        },
+        "objects_with_properties.json": {
+            "scale": 2.3334374999999996,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 145.7077809026383,
+                "y": 196.062675773403
+            }
+        },
+        "tiles_with_properties.json": {
+            "scale": 2.3334374999999996,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 139.27949645105133,
+                "y": 160.0642828445159
+            }
+        },
+        "tiles_with_properties.json#template-tileset": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         }
     },
+    "last.imagePath": "C:/Users/ruihan/Documents/GitHub/tiled-property-flattener/test/test_data/vehicles",
+    "map.height": 10,
+    "map.lastUsedFormat": "json",
+    "map.layerDataFormat": null,
+    "map.width": 10,
     "openFiles": [
-        "map1.json"
+        "map1.json",
+        "tiles_with_properties.json",
+        "objects_with_properties.json",
+        "layers_with_properties.json"
     ],
     "project": "vehicles.tiled-project",
     "property.type": "Plane",
     "recentFiles": [
-        "map1.json"
-    ]
+        "map1.json",
+        "tiles_with_properties.json",
+        "layers_with_properties.json",
+        "objects_with_properties.json",
+        "layers_with_properties_2.json",
+        "map3.json",
+        "map2.json"
+    ],
+    "tileset.embedInMap": true
 }

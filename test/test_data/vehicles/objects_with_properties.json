@@ -190,14 +190,58 @@
                 {
                  "height":0,
                  "id":7,
-                 "name":"genericCar",
+                 "name":"motorVehicle",
                  "point":true,
+                 "properties":[
+                        {
+                         "name":"@composite:engine",
+                         "propertytype":"Engine",
+                         "type":"class",
+                         "value":
+                            {
+                             "numberOfCylinders":4
+                            }
+                        }, 
+                        {
+                         "name":"vehicle",
+                         "propertytype":"Vehicle",
+                         "type":"class",
+                         "value":
+                            {
+                             "matter":
+                                {
+                                 "weight":1500
+                                }
+                            }
+                        }],
                  "rotation":0,
-                 "type":"Car",
+                 "type":"MotorVehicle",
                  "visible":true,
                  "width":0,
                  "x":80,
                  "y":273.5
+                }, 
+                {
+                 "height":0,
+                 "id":8,
+                 "name":"defaultPlane",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"plane",
+                         "propertytype":"Plane",
+                         "type":"class",
+                         "value":
+                            {
+
+                            }
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":142.707914825231,
+                 "y":240.417838489353
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -206,7 +250,7 @@
          "y":0
         }],
  "nextlayerid":4,
- "nextobjectid":8,
+ "nextobjectid":9,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.1",

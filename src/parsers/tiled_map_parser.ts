@@ -1,3 +1,6 @@
+import BasicProperties from '../properties/basic_properties';
+import BasicTileProperties from '../properties/basic_tile_properties';
+import TilesetProperties from '../properties/tileset_properties';
 import TiledMapParsedResult from './tiled_map_parsed_result';
 import type TiledProjectParsedResult from './tiled_project_parsed_result';
 
@@ -9,8 +12,9 @@ import type TiledProjectParsedResult from './tiled_project_parsed_result';
  * @returns
  */
 export function parse (jsonData: any, parsedProject: TiledProjectParsedResult): TiledMapParsedResult {
-    const objectIdToPropertiesMap = new Map<number, any>();
-    const layerIdToPropertiesMap = new Map<number, any>();
+    const objectIdToPropertiesMap = new Map<number, BasicProperties>();
+    const layerIdToPropertiesMap = new Map<number, BasicProperties>();
+    const tilesetIdToPropertiesMap = new Map<number, TilesetProperties>();
 
     // Gather the properties of all the layers, including inherited properties.
     jsonData.layers.forEach((layer: any) => {
@@ -32,5 +36,37 @@ export function parse (jsonData: any, parsedProject: TiledProjectParsedResult): 
         });
     });
 
-    return new TiledMapParsedResult(layerIdToPropertiesMap, objectIdToPropertiesMap);
+    // Gather the properties of all the tilesets, including inherited properties.
+    jsonData.tilesets.forEach((tileset: any) => {
+        const tilesetProperties = parseTileset(tileset, parsedProject);
+
+        tilesetIdToPropertiesMap.set(tilesetProperties.firstgid, tilesetProperties);
+    });
+
+    return new TiledMapParsedResult(
+        layerIdToPropertiesMap,
+        objectIdToPropertiesMap,
+        tilesetIdToPropertiesMap
+    );
 }
+
+function parseTileset (tileset: any, parsedProject: TiledProjectParsedResult): TilesetProperties {
+    return {
+        columns: tileset.columns,
+        firstgid: tileset.firstgid,
+        image: tileset.image,
+        imageheight: tileset.imageheight,
+        imagewidth: tileset.imagewidth,
+        margin: tileset.margin,
+        name: tileset.name,
+        spacing: tileset.spacing,
+        tilecount: tileset.tilecount,
+        tileheight: tileset.tileheight,
+        tilewidth: tileset.tilewidth,
+        tiles: new Map<number, BasicTileProperties>(tileset.tiles?.map((tile: any) => {
+            const tileProperties = parsedProject.flattenPropertiesOnTile(tile);
+
+            return [tileProperties.id, tileProperties];
+        }))
+    }
+};

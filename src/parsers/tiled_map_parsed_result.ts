@@ -1,9 +1,12 @@
-import BasicProperties from "../basic_properties";
+import BasicProperties from "../properties/basic_properties";
+import TilesetProperties from "../properties/tileset_properties";
+import { cloneDeep } from "lodash";
 
 export default class TiledMapParsedResult {
     constructor (
         private readonly layerIdToPropertiesMap: ReadonlyMap<number, BasicProperties>,
-        private readonly objectIdToPropertiesMap: ReadonlyMap<number, BasicProperties>
+        private readonly objectIdToPropertiesMap: ReadonlyMap<number, BasicProperties>,
+        private readonly tilesetIdToPropertiesMap: ReadonlyMap<number, TilesetProperties>
     ) {
     }
 
@@ -14,7 +17,7 @@ export default class TiledMapParsedResult {
         // Copy a new map of the properties, deep copying the properties.
         const clonedIdToPropertiesMap: ReadonlyMap<number, BasicProperties> = new Map(
             Array.from(this.objectIdToPropertiesMap.entries())
-                .map(([id, object]) => [id, object])
+                .map(([id, object]) => [id, cloneDeep(object)])
         );
 
         return clonedIdToPropertiesMap;
@@ -27,7 +30,20 @@ export default class TiledMapParsedResult {
         // Copy a new map of the properties, deep copying the properties.
         const clonedIdToPropertiesMap: ReadonlyMap<number, BasicProperties> = new Map(
             Array.from(this.layerIdToPropertiesMap.entries())
-                .map(([id, object]) => [id, object])
+                .map(([id, object]) => [id, cloneDeep(object)])
+        );
+
+        return clonedIdToPropertiesMap;
+    }
+
+    /**
+     * Gets a copy of the tilesetIdToPropertiesMap.
+     */
+    public getTilesetIdToPropertiesMap (): ReadonlyMap<number, TilesetProperties> {
+        // Copy a new map of the properties, deep copying the properties.
+        const clonedIdToPropertiesMap: ReadonlyMap<number, TilesetProperties> = new Map(
+            Array.from(this.tilesetIdToPropertiesMap.entries())
+                .map(([id, object]) => [id, cloneDeep(object)])
         );
 
         return clonedIdToPropertiesMap;
@@ -36,7 +52,7 @@ export default class TiledMapParsedResult {
     /**
      * Gets a JSON of the idToObjectMap.
      */
-    public toJson (): any {
+    public toJSON (): any {
         // Recursively build the JSON object, converting sets to arrays and maps to objects.
         const convertToJson = (object: any): any => {
             if (object instanceof Set) {
@@ -60,7 +76,8 @@ export default class TiledMapParsedResult {
 
         return JSON.stringify({
             layers: convertToJson(this.getLayerIdToPropertiesMap()),
-            objects: convertToJson(this.getObjectIdToPropertiesMap())
+            objects: convertToJson(this.getObjectIdToPropertiesMap()),
+            tilesets: convertToJson(this.getTilesetIdToPropertiesMap())
         }, null, 4);
     }
 }

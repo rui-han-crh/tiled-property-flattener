@@ -95,7 +95,5 @@ if (tiledFolderPath !== undefined) {
     const mapParsedResult = parseMapFile(mapFilePath, projectParsedResult);
 
     // Write the parsed result to the output file.
-    fs.writeFileSync(outputFile, mapParsedResult.toJson());
-
-    console.log('Done!');
+    fs.writeFileSync(outputFile, mapParsedResult.toJSON());
 }

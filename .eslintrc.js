@@ -19,6 +19,11 @@ module.exports = {
             // "extends": ["plugin:jest/recommended"]
             plugins: ['jest'],
             rules: {
+                '@typescript-eslint/member-delimiter-style': ['off'],
+                semi: ['error', 'always'],
+                indent: ['error', 4],
+                '@typescript-eslint/indent': ['off'],
+                '@typescript-eslint/semi': ['off'],
                 'jest/no-disabled-tests': 'warn',
                 'jest/no-focused-tests': 'error',
                 'jest/no-identical-title': 'error',

@@ -1,4 +1,5 @@
-import { COMPOSITE_PREFIX } from './tiled_constants';
+import ParserOptions from '../parser_options';
+import { COMPOSITE_PREFIX, INHERIT_PREFIX } from './tiled_constants';
 
 /**
  * Offers a way to flatten a nested JSON structure.
@@ -13,7 +14,8 @@ export class Flattener {
 
     constructor (
         private readonly tiledClassToMembersMap: ReadonlyMap<string, any>,
-        public readonly enumNameToValuesMap: ReadonlyMap<string, ReadonlySet<string>>
+        public readonly enumNameToValuesMap: ReadonlyMap<string, ReadonlySet<string>>,
+        private readonly parserOptions?: ParserOptions
     ) {}
 
     /**
@@ -124,7 +126,15 @@ export class Flattener {
             // Get the flattened properties of the class.
             const compositeClassFlattenedProperties = this.memoiser.get(propertyType);
 
-            if ((member.name as string).startsWith(COMPOSITE_PREFIX)) {
+            // Check if we should nest the class's properties.
+            // We should nest if either the class is declared with the `@composite:` prefix,
+            // or the parser is set to default to composite classes and the class is not declared
+            // with the `@inherit:` prefix.
+            const shouldNest = (member.name as string).startsWith(COMPOSITE_PREFIX) ||
+                (this.parserOptions?.defaultComposite &&
+                    !(member.name as string).startsWith(INHERIT_PREFIX));
+
+            if (shouldNest) {
                 // If the member is declared to be composite, we cannot flatten it.
                 // However, we continue to flatten the rest of the properties.
                 return {

@@ -1,7 +1,7 @@
 {
   "name": "tiled-property-flattener",
   "version": "1.0.8",
-  "description": "Flattens the properties of the Tiled classes contained by any Tiled class, or Tiled object/layer, into the Tiled class's/object's/layer's own properties, as if it had inherited the properties. This allows easy access to each asset's custom properties. Additionally, allows the user to mark classes as being composite via the `@composite:` prefix to retain composition.",  
+  "description": "Flattens the properties of the Tiled classes contained by any Tiled class, or Tiled object/layer, into the Tiled class's/object's/layer's own properties, as if it had inherited the properties. This allows easy access to each asset's custom properties. Additionally, allows the user to mark classes as being composite via the `@composite:` prefix to retain composition.",
   "main": "dist/tiled_property_flattener.min.js",
   "types": "dist/tiled_property_flattener.d.ts",
   "type": "module",
@@ -17,6 +17,7 @@
     "url": "https://github.com/rui-han-crh/Tiled-Property-Flattener.git"
   },
   "keywords": [
+    "Tiled Project Parser",
     "Tiled",
     "Phaser",
     "JSON",
@@ -30,6 +31,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/jest": "^29.5.2",
+    "@types/lodash": "^4.14.195",
     "@types/node": "^20.3.2",
     "@typescript-eslint/eslint-plugin": "^5.59.9",
     "eslint": "^8.42.0",
@@ -46,6 +48,7 @@
   },
   "dependencies": {
     "@types/minimist": "^1.2.2",
+    "lodash": "^4.17.21",
     "minimist": "^1.2.8"
   }
 }
