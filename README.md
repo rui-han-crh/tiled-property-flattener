@@ -59,7 +59,7 @@ First, clone the project from GitHub and install the dependencies.
 
 For single map files:
 ```bash
-npm start [-p <PROJECT_FILE_PATH> -t <PROJECT_OUTPUT_PATH>] [-m <MAP_FILE_PATH> -o <OUTPUT_FILE>]
+npm start -p <PROJECT_FILE_PATH> [ -t <PROJECT_OUTPUT_PATH> ] [ -m <MAP_FILE_PATH> -o <OUTPUT_FILE> ]
 ```
 
 | Option | Description |
