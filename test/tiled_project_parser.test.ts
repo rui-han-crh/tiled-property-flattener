@@ -1,5 +1,6 @@
 import fs from 'fs';
 import * as TiledProjectParser from '../src/parsers/tiled_project_parser';
+import EnumValues from '../src/enum_values';
 
 test(`
 Given a .tiled-project file containing a single class,
@@ -140,7 +141,7 @@ then parses all the enums of the file.
     const tiledProjectParsedResult = TiledProjectParser.parse(jsonProjectFileData);
 
     // Retrieve the enums.
-    const enums = tiledProjectParsedResult.getEnums();
+    const enums = tiledProjectParsedResult.getEnumsMap();
 
     // Retrieve the custom classes.
     const customTypes = tiledProjectParsedResult.getCustomTypesMap();
@@ -163,34 +164,32 @@ then parses all the enums of the file.
     expect(customTypes.has('Rachel')).toBe(true);
 
     // Check that the enums contain the expected values.
-    expect(enums.get('Gender')).toEqual(new Set<string>(
-        ['Male', 'Female']
-    ));
+    expect(enums.get('Gender')).toEqual(new EnumValues(['Male', 'Female']));
 
-    expect(enums.get('Module')).toEqual(new Set<string>(
+    expect(enums.get('Module')).toEqual(new EnumValues(
         ['CS1010X', 'CS2030S', 'CS2040S', 'CS2103T', 'CS2101', 'CS2102', 'MA1521', 'MA2001']
     ));
 
     // Check that the classes contain the expected properties.
     expect(customTypes.get('Hailey')).toEqual({
-        currentTeachingModule: new Set<string>(['CS2040S']),
+        currentTeachingModule: 'CS2040S',
         officeAddress: '15 Computing Dr, Singapore 117418, #15-02',
-        gender: new Set<string>(['Female'])
+        gender: 'Female'
     });
 
     expect(customTypes.get('Rachel')).toEqual({
-        gender: new Set<string>(['Female']),
-        currentTeachingModule: new Set<string>(['CS2030S'])
+        gender: 'Female',
+        currentTeachingModule: 'CS2030S'
     });
 
     expect(customTypes.get('Jonathan')).toEqual({
-        gender: new Set<string>(['Male']),
-        currentTeachingModule: new Set<string>(['CS2040S'])
+        gender: 'Male',
+        currentTeachingModule: 'CS2040S'
     });
 
     expect(customTypes.get('Thomas')).toEqual({
-        gender: new Set<string>(['Male']),
-        currentTeachingModule: new Set<string>(['CS2103T'])
+        gender: 'Male',
+        currentTeachingModule: 'CS2103T'
     });
 });
 
@@ -216,23 +215,23 @@ then parses all the enums of the file.
     // ASSERT
     // Check that every person can now teach multiple modules.
     expect(customTypes.get('Hailey')).toEqual({
-        gender: new Set<string>(['Female']),
+        gender: 'Female',
         currentTeachingModule: new Set<string>(['CS2030S', 'CS2101', 'CS2102']),
         officeAddress: '15 Computing Dr, Singapore 117418, #15-02'
     });
 
     expect(customTypes.get('Rachel')).toEqual({
-        gender: new Set<string>(['Female']),
+        gender: 'Female',
         currentTeachingModule: new Set<string>(['CS1010X', 'CS2103T'])
     });
 
     expect(customTypes.get('Jonathan')).toEqual({
-        gender: new Set<string>(['Male']),
+        gender: 'Male',
         currentTeachingModule: new Set<string>(['CS2030S'])
     });
 
     expect(customTypes.get('Thomas')).toEqual({
-        gender: new Set<string>(['Male']),
+        gender: 'Male',
         currentTeachingModule: new Set<string>(['CS1010X', 'CS2102', 'MA1521', 'CS2030S'])
     });
 });

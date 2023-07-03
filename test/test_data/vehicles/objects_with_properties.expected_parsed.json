@@ -1,9 +1,7 @@
 {
     "layers": {
         "1": {
-            "layerType": [
-                "Danger"
-            ],
+            "layerType": "Danger",
             "name": "Danger",
             "id": 1,
             "class": "DangerLayer",
@@ -11,9 +9,7 @@
             "y": 0
         },
         "2": {
-            "layerType": [
-                "Safe"
-            ],
+            "layerType": "Safe",
             "name": "Safe",
             "id": 2,
             "class": "SafeLayer",
@@ -43,9 +39,7 @@
             ],
             "numberOfWheels": 6,
             "weight": 41140,
-            "colour": [
-                "White"
-            ],
+            "colour": "White",
             "amountOfFuelLeft": 10000,
             "isFlying": false,
             "name": "boeing737",
@@ -68,9 +62,7 @@
             ],
             "numberOfWheels": 6,
             "weight": 41140,
-            "colour": [
-                "White"
-            ],
+            "colour": "White",
             "amountOfFuelLeft": 8150.9,
             "isFlying": true,
             "name": "boeing737",
@@ -86,9 +78,7 @@
             ],
             "numberOfWheels": 4,
             "weight": 1500,
-            "colour": [
-                "Red"
-            ],
+            "colour": "Red",
             "amountOfFuelLeft": 150,
             "engine": {
                 "numberOfCylinders": 4
@@ -107,9 +97,7 @@
             ],
             "numberOfWheels": 0,
             "weight": 1397,
-            "colour": [
-                "Green"
-            ],
+            "colour": "Green",
             "amountOfFuelLeft": 150.9,
             "engine": {
                 "numberOfCylinders": 4
@@ -127,9 +115,7 @@
             ],
             "numberOfWheels": 0,
             "weight": 3500,
-            "colour": [
-                "Yellow"
-            ],
+            "colour": "Yellow",
             "amountOfFuelLeft": 230.378,
             "engine": {
                 "numberOfCylinders": 8
@@ -142,14 +128,10 @@
             "y": 273
         },
         "7": {
-            "vehicleUsage": [
-                ""
-            ],
+            "vehicleUsage": [],
             "numberOfWheels": 0,
             "weight": 1500,
-            "colour": [
-                "Red"
-            ],
+            "colour": "Red",
             "amountOfFuelLeft": 0,
             "engine": {
                 "numberOfCylinders": 4,
@@ -162,14 +144,10 @@
             "y": 273.5
         },
         "8": {
-            "vehicleUsage": [
-                ""
-            ],
+            "vehicleUsage": [],
             "numberOfWheels": 0,
             "weight": 0,
-            "colour": [
-                "Red"
-            ],
+            "colour": "Red",
             "amountOfFuelLeft": 0,
             "isFlying": false,
             "name": "defaultPlane",

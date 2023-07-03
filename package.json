@@ -17,11 +17,11 @@
     "url": "https://github.com/rui-han-crh/Tiled-Property-Flattener.git"
   },
   "keywords": [
-    "Tiled Project Parser",
-    "Tiled",
-    "Phaser",
-    "JSON",
-    "Parser"
+    "Tiled Project",
+    "Tiled Map",
+    "Parser",
+    "Flattener",
+    "JSON"
   ],
   "files": [
     "dist",

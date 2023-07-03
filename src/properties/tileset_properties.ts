@@ -1,7 +1,7 @@
 import BasicTileProperties from "./basic_tile_properties";
 
 /**
- * The basic properties of a Tiled object.
+ * The basic properties of a Tiled tileset.
  */
 interface TilesetProperties {
     columns: number;

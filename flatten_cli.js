@@ -57,11 +57,14 @@ if (tiledFolderPath !== undefined) {
             fs.writeFileSync(`${outputFolderPath}/${mapFile}`, parsedMap.toJson());
         }
     );
+
+    // Output the project file, write it to the specified file.
+    fs.writeFileSync(`${outputFolderPath}/${projectFile}`, parsedProject.toJson());
 } else {
     // Get the project file.
     const projectFilePath = args.projectFile ?? args.p;
 
-    const USAGE_PROMPT = 'Usage: node parse -p <PROJECT_FILE_PATH> -m <MAP_FILE_PATH> -o <OUTPUT_FILE>';
+    const USAGE_PROMPT = 'Usage: node parse [-p <PROJECT_FILE_PATH> -t <PROJECT_OUTPUT_PATH>] [-m <MAP_FILE_PATH> -o <OUTPUT_FILE>]\n  -p, --project-file: The path to the project file.\n  -m, --map-file: The path to the map file.\n  -o, --output: The path to the output file.\n  -t, -output-project: The path to the output project file, if outputting the project file JSON is desired.';
 
     if (projectFilePath === undefined) {
         console.log('No project file specified.');
@@ -72,8 +75,8 @@ if (tiledFolderPath !== undefined) {
     // Get the map file.
     const mapFilePath = args.mapFile ?? args.m;
 
-    if (mapFilePath === undefined) {
-        console.log('No map file specified.');
+    if (mapFilePath === undefined && (args.o ?? args.output) !== undefined) {
+        console.log('No map file specified, but output file specified.');
         console.log(USAGE_PROMPT);
         process.exit(1);
     }
@@ -82,8 +85,8 @@ if (tiledFolderPath !== undefined) {
 
     const outputFile = args.output ?? args.o;
 
-    if (outputFile === undefined) {
-        console.log('No output file specified.');
+    if (outputFile === undefined && (args.m ?? args.mapFile) !== undefined) {
+        console.log('No output file specified, but map file specified.');
         console.log(USAGE_PROMPT);
         process.exit(1);
     }
@@ -91,9 +94,16 @@ if (tiledFolderPath !== undefined) {
     // Parse the project file, so we can reference the classes and enums defined in it.
     const projectParsedResult = parseProjectFile(projectFilePath);
 
-    // Then, parse the map file, referencing the project parsed result.
-    const mapParsedResult = parseMapFile(mapFilePath, projectParsedResult);
+    if (mapFilePath && outputFile) {
+        // Then, parse the map file, referencing the project parsed result.
+        const mapParsedResult = parseMapFile(mapFilePath, projectParsedResult);
 
-    // Write the parsed result to the output file.
-    fs.writeFileSync(outputFile, mapParsedResult.toJSON());
+        // Write the parsed result to the output file.
+        fs.writeFileSync(outputFile, mapParsedResult.toJSON());
+    }
+
+    // If the user wants to output the project file, write it to the specified file.
+    if (args.outputProject ?? args.t) {
+        fs.writeFileSync(args.outputProject ?? args.t, projectParsedResult.toJSON());
+    }
 }

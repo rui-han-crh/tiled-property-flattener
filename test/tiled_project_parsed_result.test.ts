@@ -1,5 +1,6 @@
 import fs from 'fs';
 import { TiledProjectParser } from '../src/tiled_property_flattener';
+import EnumValues from '../src/enum_values';
 
 test(`
 Given a parsed Tiled project file,
@@ -69,7 +70,7 @@ then returns the expected custom enums.
     const tiledProjectParsedResult = TiledProjectParser.parse(jsonProjectFileData);
     
     // Retrieve the custom classes.
-    const customEnums = tiledProjectParsedResult.getEnums();
+    const customEnums = tiledProjectParsedResult.getEnumsMap();
 
     // ASSERT
     // Check that the parsed result contains the expected classes.
@@ -77,15 +78,10 @@ then returns the expected custom enums.
     expect(customEnums.has('Module')).toBe(true);
 
     // Check that the parsed result contains the expected properties.
-    expect(customEnums.get('Gender')).toEqual(new Set<string>(
-        [
-            'Male',
-            'Female'
-        ]
-    ));
+    expect(customEnums.get('Gender')).toEqual(new EnumValues(['Male', 'Female']));
 
     // Check that the parsed result contains the expected properties.
-    expect(customEnums.get('Module')).toEqual(new Set<string>(
+    expect(customEnums.get('Module')).toEqual(new EnumValues(
         [
             'CS1010X',
             'CS2030S',
@@ -95,6 +91,30 @@ then returns the expected custom enums.
             'CS2102',
             'MA1521',
             'MA2001'
-        ]
-    ));
+        ], true)
+    );
+});
+
+test(`
+Given a parsed Tiled project file,
+when converting the parsed result to a JSON string,
+then returns the expected JSON string.
+`, () => {
+    // ARRANGE
+    // Fetch the test data file path.
+    const projectFilePath = 'test/test_data/enums_with_flags/enums_with_flags.tiled-project';
+    // Read in the .tiled-project file.
+    const jsonProjectFileData = JSON.parse(fs.readFileSync(projectFilePath, 'utf8'));
+
+    // ACT
+    // Parse the .tiled-project file.
+    const tiledProjectParsedResult = TiledProjectParser.parse(jsonProjectFileData);
+    // Convert the parsed result to a JSON string.
+    const tiledProjectParsedResultJsonString = tiledProjectParsedResult.toJSON();
+
+    // ASSERT
+    // Get the expected JSON string.
+    const expectedJsonString = fs.readFileSync('test/test_data/enums_with_flags/enums_with_flags.expected_parsed.json', 'utf8');
+    // Check that the output JSON string is as expected.
+    expect(tiledProjectParsedResultJsonString).toEqual(expectedJsonString);
 });

@@ -64,7 +64,7 @@ then parses all the objects in the map and flattens its properties.
         },
         isFlying: false,
         amountOfFuelLeft: 10_000.0,
-        colour: new Set<string>(['White']),
+        colour: 'White',
         weight: 41_140.0,
         numberOfWheels: 6,
         vehicleUsage: new Set<string>(['Transport'])
@@ -120,7 +120,7 @@ then parses all the tiles in the map and flattens its properties.
                     weight: 150
                 },
                 amountOfFuelLeft: 0,
-                colour: new Set<string>(['Yellow']),
+                colour: 'Yellow',
                 weight: 3501.7,
                 numberOfWheels: 4,
                 vehicleUsage: new Set<string>(['OffRoad'])

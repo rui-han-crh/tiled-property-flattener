@@ -1,3 +1,8 @@
+/**
+ * The options for the parser.
+ * 
+ * All options are turned off by default.
+ */
 interface ParserOptions {
     /**
      * Should we treat nested classes as a composite by default?

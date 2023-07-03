@@ -50,7 +50,12 @@ export default class TiledMapParsedResult {
     }
 
     /**
-     * Gets a JSON of the idToObjectMap.
+     * Gets a JSON of the parsed result.
+     * 
+     * The JSON contains three distinct sections:
+     * - layers: A map of layer id to properties.
+     * - objects: A map of object id to properties.
+     * - tilesets: A map of tileset firstgid to properties.
      */
     public toJSON (): any {
         // Recursively build the JSON object, converting sets to arrays and maps to objects.

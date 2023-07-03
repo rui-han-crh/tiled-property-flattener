@@ -1,0 +1,63 @@
+{
+    "customTypes": {
+        "Person": {
+            "gender": "Male"
+        },
+        "Professor": {
+            "gender": "Male",
+            "officeAddress": "",
+            "currentTeachingModule": {}
+        },
+        "Hailey": {
+            "gender": "Female",
+            "officeAddress": "15 Computing Dr, Singapore 117418, #15-02",
+            "currentTeachingModule": {}
+        },
+        "TeachingAssistant": {
+            "currentTeachingModule": {}
+        },
+        "LabTeachingAssistant": {
+            "currentTeachingModule": {}
+        },
+        "Jonathan": {
+            "currentTeachingModule": {},
+            "gender": "Male"
+        },
+        "TutorialTeachingAssistant": {
+            "currentTeachingModule": {}
+        },
+        "Rachel": {
+            "gender": "Female",
+            "currentTeachingModule": {}
+        },
+        "Student": {
+            "gender": "Male"
+        },
+        "Thomas": {
+            "gender": "Male",
+            "currentTeachingModule": {}
+        }
+    },
+    "enums": {
+        "Gender": {
+            "values": [
+                "Male",
+                "Female"
+            ],
+            "valuesAsFlags": false
+        },
+        "Module": {
+            "values": [
+                "CS1010X",
+                "CS2030S",
+                "CS2040S",
+                "CS2103T",
+                "CS2101",
+                "CS2102",
+                "MA1521",
+                "MA2001"
+            ],
+            "valuesAsFlags": true
+        }
+    }
+}

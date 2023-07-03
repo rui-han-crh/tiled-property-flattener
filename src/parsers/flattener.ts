@@ -1,3 +1,4 @@
+import { ReadonlyEnumValues } from '../enum_values';
 import ParserOptions from '../parser_options';
 import { COMPOSITE_PREFIX, INHERIT_PREFIX } from './tiled_constants';
 
@@ -14,7 +15,7 @@ export class Flattener {
 
     constructor (
         private readonly tiledClassToMembersMap: ReadonlyMap<string, any>,
-        public readonly enumNameToValuesMap: ReadonlyMap<string, ReadonlySet<string>>,
+        public readonly enumNameToValuesMap: ReadonlyMap<string, ReadonlyEnumValues>,
         private readonly parserOptions?: ParserOptions
     ) {}
 
@@ -135,8 +136,8 @@ export class Flattener {
                     !(member.name as string).startsWith(INHERIT_PREFIX));
 
             if (shouldNest) {
-                // If the member is declared to be composite, we cannot flatten it.
-                // However, we continue to flatten the rest of the properties.
+                // If the member deemed to require nesting, we cannot flatten it.
+                // However, we continue to flatten the rest of the properties under this member.
                 return {
                     [member.name.replace(COMPOSITE_PREFIX, '')]: {
                         ...compositeClassFlattenedProperties,
@@ -151,8 +152,15 @@ export class Flattener {
                 };
             }
         } else if (this.enumNameToValuesMap.has(propertyType)) {
-            // If the member type is an enum, split it by commas and convert to Set.
-            return { [member.name]: new Set(member.value.split(',')) };
+            if (this.enumNameToValuesMap.get(propertyType)!.valuesAsFlags) {
+                // If the member type is an enum with flags, split it by commas and convert to Set.
+                return { [member.name]: member.values
+                    ? new Set(member.value.split(','))
+                    : new Set() };
+            } else {
+                // If the member type is an enum without flags, just return the value.
+                return { [member.name]: member.value };
+            }
         } else {
             return { [member.name]: member.value };
         }

@@ -1,3 +1,4 @@
+import EnumValues, { ReadonlyEnumValues } from '../enum_values';
 import ParserOptions from '../parser_options';
 import { Flattener } from './flattener';
 import TiledProjectParsedResult from './tiled_project_parsed_result';
@@ -31,11 +32,15 @@ export function parse (
     /**
      * A map of all the enums in the project file.
      */
-    const enumNameToValuesMap: ReadonlyMap<string, ReadonlySet<string>> = new Map(
+    const enumNameToValuesMap: ReadonlyMap<string, ReadonlyEnumValues> = new Map(
         jsonProjectFileData.propertyTypes.filter(
             (propertyType: any) => propertyType.type === 'enum'
         ).map(
-            (enumPropertyType: any) => [enumPropertyType.name, new Set(enumPropertyType.values)]
+            (enumPropertyType: any) => 
+            [
+                enumPropertyType.name, 
+                new EnumValues(enumPropertyType.values, enumPropertyType.valuesAsFlags)
+            ]
         )
     );
 
