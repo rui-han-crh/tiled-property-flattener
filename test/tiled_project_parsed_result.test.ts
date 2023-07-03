@@ -114,7 +114,7 @@ then returns the expected JSON string.
 
     // ASSERT
     // Get the expected JSON string.
-    const expectedJsonString = fs.readFileSync('test/test_data/enums_with_flags/enums_with_flags.expected_parsed.json', 'utf8');
+    const expectedJsonString = fs.readFileSync('test/expected_output_data/enums_with_flags/enums_with_flags.json', 'utf8');
     // Check that the output JSON string is as expected.
     expect(tiledProjectParsedResultJsonString).toEqual(expectedJsonString);
 });

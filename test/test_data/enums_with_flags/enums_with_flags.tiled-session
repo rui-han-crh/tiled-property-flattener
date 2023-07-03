@@ -8,8 +8,8 @@
             "scale": 2.04546875,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 160.35444198304177,
-                "y": 160.10999923611644
+                "x": 159.86555648919105,
+                "y": 141.53235046978838
             }
         }
     },
@@ -17,7 +17,7 @@
         "C:/Users/ruihan/Documents/GitHub/tiled-property-flattener/test/test_data/vehicles/objects_with_properties.json"
     ],
     "project": "enums_with_flags.tiled-project",
-    "property.type": "Module",
+    "property.type": "Person",
     "recentFiles": [
         "C:/Users/ruihan/Documents/GitHub/tiled-property-flattener/test/test_data/vehicles/objects_with_properties.json"
     ]

@@ -42,21 +42,20 @@ if (tiledFolderPath !== undefined) {
     // Parse the project file.
     const parsedProject = parseProjectFile(`${tiledFolderPath}/${projectFile}`);
 
-    // For every map file in the folder, which is every file that ends with `.json`...
-    fs.readdirSync(tiledFolderPath).filter((file) => file.endsWith('.json')).forEach(
-        (mapFile) => {
-            // Parse it against the project file.
-            const parsedMap = parseMapFile(`${tiledFolderPath}/${mapFile}`, parsedProject);
+    // For every file in the folder,
+    // if it is a map file (ends with `.json`), parse it against the project file,
+    // if it is a subdirectory, recursively call this function on it.
+    fs.readdirSync(tiledFolderPath).forEach((file) => {
+        if (file.endsWith('.json')) {
+            const parsedMap = parseMapFile(`${tiledFolderPath}/${file}`, parsedProject);
 
-            // Create the output folder if it doesn't exist.
-            if (!fs.existsSync(outputFolderPath)) {
-                fs.mkdirSync(outputFolderPath);
-            }
-
-            // Write the parsed result to a file with the same name (without path) as the map file.
-            fs.writeFileSync(`${outputFolderPath}/${mapFile}`, parsedMap.toJson());
+            // Write the parsed result to the output file.
+            fs.writeFileSync(`${outputFolderPath}/${file}`, parsedMap.toJSON());
+        } else if (fs.lstatSync(`${tiledFolderPath}/${file}`).isDirectory()) {
+            // Recursively call this function on the subdirectory.
+            parseTiledFolder(`${tiledFolderPath}/${file}`, outputFolderPath);
         }
-    );
+    });
 
     // Output the project file, write it to the specified file.
     fs.writeFileSync(`${outputFolderPath}/${projectFile}`, parsedProject.toJson());

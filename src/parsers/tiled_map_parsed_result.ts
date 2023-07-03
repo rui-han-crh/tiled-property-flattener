@@ -1,3 +1,4 @@
+import { buildJSON } from "../build_json";
 import BasicProperties from "../properties/basic_properties";
 import TilesetProperties from "../properties/tileset_properties";
 import { cloneDeep } from "lodash";
@@ -58,31 +59,10 @@ export default class TiledMapParsedResult {
      * - tilesets: A map of tileset firstgid to properties.
      */
     public toJSON (): any {
-        // Recursively build the JSON object, converting sets to arrays and maps to objects.
-        const convertToJson = (object: any): any => {
-            if (object instanceof Set) {
-                return Array.from(object.values()).map(convertToJson);
-            } else if (object instanceof Map) {
-                return Object.fromEntries(
-                    Array.from(object.entries()).map(([key, value]) => [key, convertToJson(value)])
-                );
-            } else if (typeof object === 'object') {
-                const newObject: any = {};
-
-                Object.entries(object).forEach(([key, value]) => {
-                    newObject[key] = convertToJson(value);
-                });
-
-                return newObject;
-            } else {
-                return object;
-            }
-        };
-
         return JSON.stringify({
-            layers: convertToJson(this.getLayerIdToPropertiesMap()),
-            objects: convertToJson(this.getObjectIdToPropertiesMap()),
-            tilesets: convertToJson(this.getTilesetIdToPropertiesMap())
+            layers: buildJSON(this.getLayerIdToPropertiesMap()),
+            objects: buildJSON(this.getObjectIdToPropertiesMap()),
+            tilesets: buildJSON(this.getTilesetIdToPropertiesMap())
         }, null, 4);
     }
 }

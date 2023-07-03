@@ -195,7 +195,7 @@ then correctly formats a JSON string.
 
     // ASSERT
     // Get the expected JSON map.
-    const expectedJsonPath = 'test/test_data/vehicles/objects_with_properties.expected_parsed.json';
+    const expectedJsonPath = 'test/expected_output_data/vehicles/objects_with_properties.json';
     const expectedJsonMap = fs.readFileSync(expectedJsonPath, 'utf8');
     // Check that the JSON map is correctly formatted.
     expect(jsonMap).toEqual(expectedJsonMap);

@@ -257,6 +257,41 @@
         {
             "color": "#ffa0a0a4",
             "drawFill": true,
+            "id": 25,
+            "members": [
+                {
+                    "name": "person",
+                    "propertyType": "Person",
+                    "type": "class",
+                    "value": {
+                        "gender": "Female"
+                    }
+                },
+                {
+                    "name": "teachingAssistant",
+                    "propertyType": "TeachingAssistant",
+                    "type": "class",
+                    "value": {
+                        "currentTeachingModule": ""
+                    }
+                }
+            ],
+            "name": "Tammy",
+            "type": "class",
+            "useAs": [
+                "property",
+                "map",
+                "layer",
+                "object",
+                "tile",
+                "tileset",
+                "wangcolor",
+                "wangset"
+            ]
+        },
+        {
+            "color": "#ffa0a0a4",
+            "drawFill": true,
             "id": 10,
             "members": [
                 {

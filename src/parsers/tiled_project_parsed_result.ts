@@ -2,7 +2,8 @@ import { cloneDeep } from 'lodash';
 import type BasicProperties from '../properties/basic_properties';
 import BasicTileProperties from '../properties/basic_tile_properties';
 import { type Flattener } from './flattener';
-import EnumValues, { ReadonlyEnumValues } from '../enum_values';
+import { ReadonlyEnumValues } from '../enum_values';
+import { buildJSON } from '../build_json';
 
 export default class TiledProjectParsedResult {
     constructor (
@@ -105,32 +106,6 @@ export default class TiledProjectParsedResult {
      * - `enums`: A map of the enums and their values, where the keys are the enum names
      */
     public toJSON (): any {
-        // Recursively build the JSON object, converting the Map to an object literal,
-        // objects to object literals,
-        // and converting the Set or EnumValues to an array.
-        const buildJSON = (value: any): any => {
-            if (value instanceof Map) {
-                return Object.fromEntries([...value.entries()].map(([key, value]) => (
-                    [key, buildJSON(value)]
-                )));
-            } else if (value instanceof EnumValues) {
-                return {
-                    values: [...value.values()] ?? [],
-                    valuesAsFlags: value.valuesAsFlags
-                }; 
-            } else if (typeof value === 'object') {
-                const newObject: any = {};
-
-                Object.entries(value).forEach(([subKey, subValue]) => {
-                    newObject[subKey] = buildJSON(subValue);
-                });
-
-                return newObject;
-            } else {
-                return value;
-            }
-        }
-
         return JSON.stringify({
             customTypes: buildJSON(this.getCustomTypesMap()),
             enums: buildJSON(this.getEnumsMap())

@@ -1,0 +1,31 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "no_layers.json",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "fileStates": {
+        "no_layers.json": {
+            "scale": 2.04546875,
+            "selectedLayer": -1,
+            "viewCenter": {
+                "x": 159.37667099534033,
+                "y": 142.5101214574899
+            }
+        }
+    },
+    "map.height": 10,
+    "map.lastUsedFormat": "json",
+    "map.layerDataFormat": null,
+    "map.width": 10,
+    "openFiles": [
+        "no_layers.json"
+    ],
+    "project": "empty_project.tiled-project",
+    "recentFiles": [
+        "no_layers.json"
+    ]
+}

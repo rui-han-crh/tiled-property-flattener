@@ -6,9 +6,7 @@
             ],
             "numberOfWheels": 0,
             "weight": 0,
-            "colour": [
-                "Blue"
-            ],
+            "colour": "Blue",
             "amountOfFuelLeft": 0,
             "engine": {
                 "numberOfCylinders": 4,
@@ -21,9 +19,7 @@
             "y": 0
         },
         "2": {
-            "layerType": [
-                "Danger"
-            ],
+            "layerType": "Danger",
             "name": "danger",
             "id": 2,
             "class": "DangerLayer",
@@ -31,9 +27,7 @@
             "y": 0
         },
         "3": {
-            "layerType": [
-                "Safe"
-            ],
+            "layerType": "Safe",
             "name": "safe",
             "id": 3,
             "class": "SafeLayer",
