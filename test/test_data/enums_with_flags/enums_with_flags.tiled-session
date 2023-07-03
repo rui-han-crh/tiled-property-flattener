@@ -1,9 +1,24 @@
 {
-    "activeFile": "C:/Users/ruihan/Documents/GitHub/tiled-property-flattener/test/test_data/vehicles/objects_with_properties.json",
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "",
     "expandedProjectPaths": [
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
+        "C:/Users/ruihan/Documents/GitHub/friendly-furnicular/dist/assets/tilemaps/map3.json": {
+            "scale": 1.5734374999999998,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 208.46077457795434,
+                "y": 192.25422045680244
+            }
+        },
+        "C:/Users/ruihan/Documents/GitHub/friendly-furnicular/dist/assets/tilemaps/map3.json#Template Tileset": {
+            "scaleInDock": 1
+        },
         "C:/Users/ruihan/Documents/GitHub/tiled-property-flattener/test/test_data/vehicles/objects_with_properties.json": {
             "scale": 2.04546875,
             "selectedLayer": 0,
@@ -11,14 +26,27 @@
                 "x": 159.86555648919105,
                 "y": 141.53235046978838
             }
+        },
+        "test.tmj": {
+            "scale": 2.04546875,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 160.35444198304177,
+                "y": 160.10999923611644
+            }
         }
     },
+    "map.height": 10,
+    "map.lastUsedFormat": "json",
+    "map.layerDataFormat": null,
+    "map.width": 10,
     "openFiles": [
-        "C:/Users/ruihan/Documents/GitHub/tiled-property-flattener/test/test_data/vehicles/objects_with_properties.json"
     ],
     "project": "enums_with_flags.tiled-project",
     "property.type": "Person",
     "recentFiles": [
+        "C:/Users/ruihan/Documents/GitHub/friendly-furnicular/dist/assets/tilemaps/map3.json",
+        "test.tmj",
         "C:/Users/ruihan/Documents/GitHub/tiled-property-flattener/test/test_data/vehicles/objects_with_properties.json"
     ]
 }

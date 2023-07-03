@@ -59,14 +59,28 @@ First, clone the project from GitHub and install the dependencies.
 
 For single map files:
 ```bash
-npm start -- -p <path-to-project-file> -m <path-to-map-file> -o <path-to-output-file>
+npm start [-p <PROJECT_FILE_PATH> -t <PROJECT_OUTPUT_PATH>] [-m <MAP_FILE_PATH> -o <OUTPUT_FILE>]
 ```
+
+| Option | Description |
+| --- | --- |
+| -p, --project-file | The path to the project file. |
+| -t, --output-project | The path to the output project file, if outputting the project file JSON is desired. |
+| -m, --map-file | The path to the map file. This must be specified together with the output file.|
+| -o, --output | The path to the output file. This must be specified together with the map file.|
+
 This will output a single JSON file containing the parsed map.
 
 For multiple map files (batch mode):
 ```bash
 npm start -- -b <path-to-project-directory> -o <path-to-output-directory>
 ```
+
+| Option | Description |
+| --- | --- |
+| -b, --batch | The path to the project directory. |
+| -o, --output | The path to the output directory. Both the parsed project file and maps files will be output here. |
+
 This will output a JSON file for each map file in the project directory to the specified output directory.
 
 ---

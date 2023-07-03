@@ -35,6 +35,7 @@ export default class TiledProjectParsedResult {
             ), {}),
             name: object.name,
             id: object.id,
+            // If layer, use `class`, otherwise use `type`.
             class: object.class ?? object.type ?? null,
             x: object.x,
             y: object.y
