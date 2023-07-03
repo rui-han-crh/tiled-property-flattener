@@ -2,10 +2,10 @@ import minimist from 'minimist';
 import * as fs from 'fs';
 import { TiledProjectParser, TiledMapParser } from './dist/tiled_property_flattener.min.js';
 
-function parseProjectFile (projectFilePath) {
+function parseProjectFile (projectFilePath, options) {
     const projectFileData = JSON.parse(fs.readFileSync(projectFilePath, 'utf8'));
 
-    return TiledProjectParser.parse(projectFileData);
+    return TiledProjectParser.parse(projectFileData, options);
 }
 
 function parseMapFile (mapFilePath, parsedProject) {
@@ -34,8 +34,7 @@ if (tiledFolderPath !== undefined) {
     const outputFolderPath = args.output ?? args.o;
 
     if (outputFolderPath === undefined) {
-        console.log('No output folder specified. Please specify an output folder with the `-o` flag.');
-        console.log('Usage: node parse -b <TILED_FOLDER_PATH> -o <OUTPUT_FOLDER_PATH>');
+        logUsageBatch();
         process.exit(1);
     }
 
@@ -45,7 +44,11 @@ if (tiledFolderPath !== undefined) {
     }
 
     // Parse the project file.
-    const parsedProject = parseProjectFile(`${tiledFolderPath}/${projectFile}`);
+    const parsedProject = parseProjectFile(`${tiledFolderPath}/${projectFile}`, {
+        defaultComposite: args.defaultComposite ?? args.c ?? false
+    });
+
+    console.log(args.defaultComposite ?? args.c ?? false);
 
     // For every file in the folder,
     // if it is a map file (ends with `.json`), parse it against the project file,
@@ -70,11 +73,9 @@ if (tiledFolderPath !== undefined) {
     // Get the project file.
     const projectFilePath = args.projectFile ?? args.p;
 
-    const USAGE_PROMPT = 'Usage: node parse [-p <PROJECT_FILE_PATH> -t <PROJECT_OUTPUT_PATH>] [-m <MAP_FILE_PATH> -o <OUTPUT_FILE>]\n  -p, --project-file: The path to the project file.\n  -m, --map-file: The path to the map file.\n  -o, --output: The path to the output file.\n  -t, -output-project: The path to the output project file, if outputting the project file JSON is desired.';
-
     if (projectFilePath === undefined) {
         console.log('No project file specified.');
-        console.log(USAGE_PROMPT);
+        logUsageSingleMap();
         process.exit(1);
     }
 
@@ -83,7 +84,7 @@ if (tiledFolderPath !== undefined) {
 
     if (mapFilePath === undefined && (args.o ?? args.output) !== undefined) {
         console.log('No map file specified, but output file specified.');
-        console.log(USAGE_PROMPT);
+        logUsageSingleMap();
         process.exit(1);
     }
 
@@ -93,12 +94,14 @@ if (tiledFolderPath !== undefined) {
 
     if (outputFile === undefined && (args.m ?? args.mapFile) !== undefined) {
         console.log('No output file specified, but map file specified.');
-        console.log(USAGE_PROMPT);
+        logUsageSingleMap();
         process.exit(1);
     }
 
     // Parse the project file, so we can reference the classes and enums defined in it.
-    const projectParsedResult = parseProjectFile(projectFilePath);
+    const projectParsedResult = parseProjectFile(projectFilePath, {
+        defaultComposite: args.defaultComposite ?? args.c ?? false
+    });
 
     if (mapFilePath && outputFile) {
         // Then, parse the map file, referencing the project parsed result.
@@ -112,4 +115,20 @@ if (tiledFolderPath !== undefined) {
     if (args.outputProject ?? args.t) {
         fs.writeFileSync(args.outputProject ?? args.t, projectParsedResult.toJSON());
     }
+}
+
+function logUsageSingleMap () {
+    console.log('Usage: npm start -p <PROJECT_FILE_PATH> [-t <PROJECT_OUTPUT_PATH>] [-m <MAP_FILE_PATH> -o <OUTPUT_FILE>] [-c]');
+    console.log('  -p, --project-file: The path to the project file.');
+    console.log('  -m, --map-file: The path to the map file.');
+    console.log('  -o, --output: The path to the output file.');
+    console.log('  -t, -output-project: The path to the output project file, if outputting the project file JSON is desired.');
+    console.log('  -c, --default-composite: Instead flattening subproperties, retain subproperties structure such that they are composite in the root.');
+}
+
+function logUsageBatch () {
+    console.log('Usage: npm start -b <TILED_FOLDER_PATH> -o <OUTPUT_FOLDER_PATH> [-c]');
+    console.log('  -b, --batch: The path to the folder containing the Tiled project file and map files.');
+    console.log('  -o, --output: The path to the output folder.');
+    console.log('  -c, --default-composite: Instead flattening subproperties, retain subproperties structure such that they are composite in the root.');
 }
