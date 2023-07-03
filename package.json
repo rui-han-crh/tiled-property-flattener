@@ -17,11 +17,14 @@
     "url": "https://github.com/rui-han-crh/tiled-property-flattener.git"
   },
   "keywords": [
-    "Tiled Project",
-    "Tiled Map",
-    "Parser",
-    "Flattener",
-    "JSON"
+    "tiled",
+    "project",
+    "map",
+    "parser",
+    "flattener",
+    "json",
+    "property",
+    "types"
   ],
   "files": [
     "dist",
