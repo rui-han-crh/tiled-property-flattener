@@ -154,6 +154,7 @@ export class Flattener {
                 return { [member.name]: member.value };
             }
         } else {
+            // If the member type is a primitive, just return the value.
             return { [member.name]: member.value };
         }
     };
