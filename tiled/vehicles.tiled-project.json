@@ -1,0 +1,171 @@
+{
+    "customTypes": {
+        "Matter": {
+            "weight": 0
+        },
+        "Engine": {
+            "numberOfCylinders": 0,
+            "matter": {
+                "weight": 150
+            }
+        },
+        "Vehicle": {
+            "vehicleUsage": [],
+            "numberOfWheels": 0,
+            "matter": {
+                "weight": 0
+            },
+            "colour": "Red",
+            "amountOfFuelLeft": 0
+        },
+        "MotorVehicle": {
+            "vehicle": {
+                "vehicleUsage": [],
+                "numberOfWheels": 0,
+                "matter": {
+                    "weight": 0
+                },
+                "colour": "Red",
+                "amountOfFuelLeft": 0
+            },
+            "engine": {
+                "numberOfCylinders": 0,
+                "matter": {
+                    "weight": 150
+                }
+            }
+        },
+        "Car": {
+            "motorVehicle": {
+                "vehicle": {
+                    "vehicleUsage": [],
+                    "numberOfWheels": 4,
+                    "matter": {
+                        "weight": 0
+                    },
+                    "colour": "Red",
+                    "amountOfFuelLeft": 0,
+                    "number_of_wheels": 4
+                },
+                "engine": {
+                    "numberOfCylinders": 0,
+                    "matter": {
+                        "weight": 150
+                    }
+                }
+            }
+        },
+        "AudiA4": {
+            "car": {
+                "motorVehicle": {
+                    "vehicle": {
+                        "vehicleUsage": "Racing,Transport",
+                        "numberOfWheels": 4,
+                        "matter": {
+                            "weight": 1500
+                        },
+                        "colour": "Red",
+                        "amountOfFuelLeft": 150,
+                        "number_of_wheels": 4
+                    },
+                    "engine": {
+                        "numberOfCylinders": 4,
+                        "matter": {
+                            "weight": 150
+                        }
+                    }
+                }
+            }
+        },
+        "Plane": {
+            "vehicle": {
+                "vehicleUsage": [],
+                "numberOfWheels": 0,
+                "matter": {
+                    "weight": 0
+                },
+                "colour": "Red",
+                "amountOfFuelLeft": 0
+            },
+            "isFlying": false
+        },
+        "Boeing737": {
+            "engineA": {
+                "numberOfCylinders": 64,
+                "matter": {
+                    "weight": 150
+                }
+            },
+            "engineB": {
+                "numberOfCylinders": 64,
+                "matter": {
+                    "weight": 150
+                }
+            },
+            "plane": {
+                "vehicle": {
+                    "vehicleUsage": "Transport",
+                    "numberOfWheels": 6,
+                    "matter": {
+                        "weight": 41140
+                    },
+                    "colour": "White",
+                    "amountOfFuelLeft": 0
+                },
+                "isFlying": false
+            }
+        },
+        "PulledVehicle": {
+            "vehicle": {
+                "vehicleUsage": [
+                    "Transport"
+                ],
+                "numberOfWheels": 0,
+                "matter": {
+                    "weight": 0
+                },
+                "colour": "Red",
+                "amountOfFuelLeft": 0
+            }
+        },
+        "Carriage": {
+            "pulledVehicle": {
+                "vehicle": {
+                    "vehicleUsage": "Transport",
+                    "numberOfWheels": 0,
+                    "matter": {
+                        "weight": 200
+                    },
+                    "colour": "Blue",
+                    "amountOfFuelLeft": 0,
+                    "weight": 200,
+                    "number_of_wheels": 4
+                }
+            }
+        },
+        "DangerLayer": {
+            "layerType": "Danger"
+        },
+        "SafeLayer": {
+            "layerType": "Safe"
+        }
+    },
+    "enums": {
+        "Colour": [
+            "Red",
+            "Green",
+            "Blue",
+            "Yellow",
+            "White"
+        ],
+        "LayerType": [
+            "Danger",
+            "Safe"
+        ],
+        "VehicleUsage": [
+            "OffRoad",
+            "Racing",
+            "Transport"
+        ]
+    }
+}

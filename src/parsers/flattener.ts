@@ -1,5 +1,6 @@
-import EnumValues, { ReadonlyEnumValues } from '../enum_values';
-import ParserOptions from '../parser_options';
+import { type ReadonlyEnumValues } from '../enum_values';
+import { mergeDeep } from '../merge_deep';
+import type ParserOptions from '../parser_options';
 import { COMPOSITE_PREFIX, INHERIT_PREFIX } from './tiled_constants';
 
 /**
@@ -117,7 +118,7 @@ export class Flattener {
                 // recursively flatten the class's members.
                 const compositeClassFlattenedProperties = this.tiledClassToMembersMap.get(propertyType)
                     .reduce((acc: any, nestedMember: any) => (
-                        { ...this.flattenMemberProperty(nestedMember), ...acc }
+                        mergeDeep(this.flattenMemberProperty(nestedMember), acc)
                     ), {});
 
                 // Save the class's flattened properties to the memoised map, so we don't have to
@@ -129,26 +130,27 @@ export class Flattener {
             const compositeClassFlattenedProperties = this.memoiser.get(propertyType);
 
             // Create the resulting object from recursively flattening the class's members.
-            const resultantObject = {
-                ...compositeClassFlattenedProperties,
-                ...recursiveFlattenValue(member.value, compositeClassFlattenedProperties)
-            };
+            const resultantObject = mergeDeep(
+                compositeClassFlattenedProperties,
+                this.flattenValue(member.value, compositeClassFlattenedProperties)
+            );
 
-            // Check if we should nest the class's properties.
-            // We should nest if either the class is declared with the `@composite:` prefix,
-            // or the parser is set to default to composite classes and the class is not declared
-            // with the `@inherit:` prefix.
-            const shouldNest = (member.name as string).startsWith(COMPOSITE_PREFIX) ||
-                (this.parserOptions?.defaultComposite &&
-                    !(member.name as string).startsWith(INHERIT_PREFIX));
-
-            return shouldNest 
-                ? {[member.name.replace(COMPOSITE_PREFIX, '')]: resultantObject}
-                : resultantObject;
+            // Check if we should flatten the class's properties.
+            if (this.checkIfShouldFlatten(member.name)) {
+                // If we need to flatten, return the resulting properties from the recursive call.
+                return resultantObject;
+            } else {
+                // Otherwise, return the resulting properties nested under the class's name.
+                return { [member.name.replace(COMPOSITE_PREFIX, '')]: resultantObject };
+            }
         } else if (this.enumNameToValuesMap.has(propertyType)) {
-            if (this.enumNameToValuesMap.get(propertyType)!.valuesAsFlags) {
+            if ((this.enumNameToValuesMap.get(propertyType) as ReadonlyEnumValues).valuesAsFlags) {
                 // If the member type is an enum with flags, return a set of the flags.
-                return { [member.name]: new Set(member.value ? member.value.split(',') : []) };
+                return {
+                    [member.name]: new Set(
+                        (member.value as string).split(',').filter((flag: string) => flag !== '')
+                    )
+                };
             } else {
                 // If the member type is an enum without flags, just return the value.
                 return { [member.name]: member.value };
@@ -166,81 +168,107 @@ export class Flattener {
     public get memoisedFlattenedProperties (): ReadonlyMap<string, any> {
         return this.memoiser;
     }
-}
 
-/**
- * This is a recursive function that will flatten a `value` key of a member.
- *
- * This function is used if the structure looks like this:
- * ```json
- * {
- *     <PROPERTY_NAME>: <PROPERTY_VALUE>,
- *     <PROPERTY_NAME>: {
- *         <PROPERTY_NAME>: <PROPERTY_VALUE>,
- *         ...
- *     },
- *     ...
- * }
- * ```
- *
- * The function will recursively flatten the `value` key of the member.
- *
- * ```json
- * {
- *    <PROPERTY_NAME>: <PROPERTY_VALUE>,
- *    <PROPERTY_NAME>: <PROPERTY_VALUE>,
- *    ...
- * }
- * ```
- *
- * @param propertyValue The `value` key of the member. This is an object
- *  of key-value pairs, where the key is a string representing the name of the property,
- *  and the value is the value of the property, which could be a primitive, or another
- *  of the same object.
- * @param currentIteration The current iteration of the recursive function.
- */
-function recursiveFlattenValue (propertyValue: any, parentProperties: any): any {
-    return Object.entries(propertyValue).reduce((acc: any, [leftHandSide, rightHandSide]: [string, any]) => {
-        // Perform recursive flattening based on the type of the value.
-        if (typeof rightHandSide !== 'object') {
-            // The value is not an object, it is a primitive.
+    /**
+     * Flattens a `value` key of a member recursively.
+     *
+     * This function is used if the structure looks like this:
+     * ```json
+     * {
+     *     <PROPERTY_NAME>: <PROPERTY_VALUE>,
+     *     <PROPERTY_NAME>: {
+     *         <PROPERTY_NAME>: <PROPERTY_VALUE>,
+     *         ...
+     *     },
+     *     ...
+     * }
+     * ```
+     *
+     * The function will recursively flatten the `value` key of the member.
+     *
+     * ```json
+     * {
+     *    <PROPERTY_NAME>: <PROPERTY_VALUE>,
+     *    <PROPERTY_NAME>: <PROPERTY_VALUE>,
+     *    ...
+     * }
+     * ```
+     *
+     * @param propertyValue The `value` key of the member. This is an object
+     *  of key-value pairs, where the key is a string representing the name of the property,
+     *  and the value is the value of the property, which could be a primitive, or another
+     *  of the same object.
+     * @param currentIteration The current iteration of the recursive function.
+     */
+    private flattenValue (propertyValue: any, parentProperties: any): any {
+        return Object.entries(propertyValue).reduce(
+            (acc: any, [leftHandSide, rightHandSide]: [string, any]) => {
+                // Perform recursive flattening based on the type of the value.
+                if (typeof rightHandSide !== 'object') {
+                    // The value is not an object, it is a primitive.
 
-            // However, a primitive could be an enum, like ('Racing,Transport,Offroad').
-            // We need to check if the left hand side is enum-like in the parent properties.
-            // An enum is described by a Set object.
-            // NOTE: An enum is described only by EnumValues in the enumNameToValuesMap, not here.
-            // Enums without flags will have their parent property as a string, not a Set.
+                    // However, a primitive could be an enum, like ('Racing,Transport,Offroad').
+                    // We need to check if the left hand side is enum-like in the parent properties.
+                    // An enum is described by a Set object.
+                    // NOTE: An enum is described only by EnumValues in the enumNameToValuesMap, not here.
+                    // Enums without flags will have their parent property as a string, not a Set.
 
-            // Crawl up the parent properties to see if the left hand side is an enum.
-            const parentProperty = parentProperties[leftHandSide];
-            if (parentProperty instanceof Set) {
-                return {
-                    [leftHandSide]: new Set(rightHandSide ? rightHandSide.split(',') : []),
-                    ...acc
-                };
-            } else {
-                // The left hand side is not an enum with flags, we can just return the value.
-                return {
-                    [leftHandSide]: rightHandSide,
-                    ...acc
-                };
-            }
-        } else if (leftHandSide.startsWith(COMPOSITE_PREFIX)) {
-            const strippedName = leftHandSide.replace(COMPOSITE_PREFIX, '');
-            // Else, if it is declared to be composite, we cannot flatten it.
-            // However, we continue to flatten the rest of the properties.
-            const result = {
-                [strippedName]: recursiveFlattenValue(rightHandSide, parentProperties),
-                ...acc
-            };
-            return result;
+                    // Crawl up the parent properties to see if the left hand side is an enum.
+                    const parentProperty = parentProperties[leftHandSide];
+                    if (parentProperty instanceof Set) {
+                        return mergeDeep(
+                            {
+                                [leftHandSide]: new Set((rightHandSide as string).split(',')
+                                    .filter((flag: string) => flag !== ''))
+                            },
+                            acc
+                        );
+                    } else {
+                        // The left hand side is not an enum with flags, we can just return the value.
+                        return mergeDeep(
+                            { [leftHandSide]: rightHandSide },
+                            acc
+                        );
+                    }
+                } else if (!this.checkIfShouldFlatten(leftHandSide)) {
+                    // If we should not flatten the left hand side...
+                    const strippedName = leftHandSide.replace(COMPOSITE_PREFIX, '');
+                    // If it is declared to be composite, we cannot flatten it.
+                    // However, we continue to flatten the rest of the properties.
+                    const result = mergeDeep(
+                        { [strippedName]: this.flattenValue(rightHandSide, parentProperties) },
+                        acc
+                    );
+                    return result;
+                } else {
+                    // Finally, if it is an object, we can flatten it.
+                    const result = mergeDeep(
+                        this.flattenValue(rightHandSide, parentProperties),
+                        acc
+                    );
+                    return result;
+                }
+            }, {});
+    };
+
+    /**
+     * Checks if the member should be flattened, based on its name and the parser options.
+     *
+     * We should nest if either the class is declared with the `@composite:` prefix,
+     * or the parser is set to default to composite classes and the class is not declared
+     * with the `@inherit:` prefix.
+     *
+     * @param member The member to check.
+     */
+    private checkIfShouldFlatten (memberName: string): boolean {
+        if (this.parserOptions?.defaultComposite === true) {
+            // If the parser is set to default to composite classes, then we should never flatten,
+            // unless if the member is declared with the `@inherit:` prefix.
+            return memberName.startsWith(INHERIT_PREFIX);
         } else {
-            // Finally, if it is an object, we can flatten it.
-            const result = {
-                ...recursiveFlattenValue(rightHandSide, parentProperties),
-                ...acc
-            };
-            return result;
+            // If the parser is not set to default to inherit classes, then we should always flatten
+            // unless if the member is declared with the `@composite:` prefix.
+            return !memberName.startsWith(COMPOSITE_PREFIX);
         }
-    }, {});
-};
+    }
+}

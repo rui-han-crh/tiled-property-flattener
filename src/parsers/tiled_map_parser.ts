@@ -1,6 +1,6 @@
-import BasicProperties from '../properties/basic_properties';
-import BasicTileProperties from '../properties/basic_tile_properties';
-import TilesetProperties from '../properties/tileset_properties';
+import type BasicProperties from '../properties/basic_properties';
+import type BasicTileProperties from '../properties/basic_tile_properties';
+import type TilesetProperties from '../properties/tileset_properties';
 import TiledMapParsedResult from './tiled_map_parsed_result';
 import type TiledProjectParsedResult from './tiled_project_parsed_result';
 
@@ -68,5 +68,5 @@ function parseTileset (tileset: any, parsedProject: TiledProjectParsedResult): T
 
             return [tileProperties.id, tileProperties];
         }))
-    }
+    };
 };

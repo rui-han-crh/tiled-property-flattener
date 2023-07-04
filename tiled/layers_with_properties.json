@@ -1,0 +1,46 @@
+{
+    "layers": {
+        "1": {
+            "vehicle": {
+                "vehicleUsage": [
+                    "Transport"
+                ],
+                "numberOfWheels": 0,
+                "matter": {
+                    "weight": 0
+                },
+                "colour": "Blue",
+                "amountOfFuelLeft": 0
+            },
+            "engine": {
+                "numberOfCylinders": 4,
+                "matter": {
+                    "weight": 150
+                }
+            },
+            "name": "motorVehicles",
+            "id": 1,
+            "class": "MotorVehicle",
+            "x": 0,
+            "y": 0
+        },
+        "2": {
+            "layerType": "Danger",
+            "name": "danger",
+            "id": 2,
+            "class": "DangerLayer",
+            "x": 0,
+            "y": 0
+        },
+        "3": {
+            "layerType": "Safe",
+            "name": "safe",
+            "id": 3,
+            "class": "SafeLayer",
+            "x": 0,
+            "y": 0
+        }
+    },
+    "objects": {},
+    "tilesets": {}
+}

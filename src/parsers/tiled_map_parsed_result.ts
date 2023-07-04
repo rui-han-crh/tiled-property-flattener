@@ -1,7 +1,7 @@
-import { buildJSON } from "../build_json";
-import BasicProperties from "../properties/basic_properties";
-import TilesetProperties from "../properties/tileset_properties";
-import { cloneDeep } from "lodash";
+import { buildJSON } from '../build_json';
+import type BasicProperties from '../properties/basic_properties';
+import type TilesetProperties from '../properties/tileset_properties';
+import { cloneDeep } from 'lodash';
 
 export default class TiledMapParsedResult {
     constructor (
@@ -52,7 +52,7 @@ export default class TiledMapParsedResult {
 
     /**
      * Gets a JSON of the parsed result.
-     * 
+     *
      * The JSON contains three distinct sections:
      * - layers: A map of layer id to properties.
      * - objects: A map of object id to properties.

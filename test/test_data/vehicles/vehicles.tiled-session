@@ -60,15 +60,15 @@
             "scale": 2,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 175,
-                "y": 152.25
+                "x": 160,
+                "y": 160.25
             }
         },
         "tiles_with_properties.json": {
             "scale": 2.3334374999999996,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 159.42145439935717,
+                "x": 159.85000669612964,
                 "y": 160.0642828445159
             }
         },
