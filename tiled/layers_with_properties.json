@@ -1,22 +1,16 @@
 {
     "layers": {
         "1": {
-            "vehicle": {
-                "vehicleUsage": [
-                    "Transport"
-                ],
-                "numberOfWheels": 0,
-                "matter": {
-                    "weight": 0
-                },
-                "colour": "Blue",
-                "amountOfFuelLeft": 0
-            },
+            "vehicleUsage": [
+                "Transport"
+            ],
+            "numberOfWheels": 0,
+            "weight": 0,
+            "colour": "Blue",
+            "amountOfFuelLeft": 0,
             "engine": {
                 "numberOfCylinders": 4,
-                "matter": {
-                    "weight": 150
-                }
+                "weight": 150
             },
             "name": "motorVehicles",
             "id": 1,

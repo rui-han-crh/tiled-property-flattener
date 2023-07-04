@@ -175,8 +175,13 @@
                                 {
                                  "amountOfFuelLeft":230.378,
                                  "colour":"Yellow",
-                                 "vehicleUsage":"OffRoad",
-                                 "weight":3500
+                                 "matter":
+                                    {
+                                     "weight":3500
+                                    },
+                                 "numberOfWheels":4,
+                                 "number_of_wheels":4,
+                                 "vehicleUsage":"OffRoad"
                                 }
                             }
                         }],

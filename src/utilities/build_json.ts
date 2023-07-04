@@ -1,4 +1,4 @@
-import EnumValues from './enum_values';
+import EnumValues from '../enum_values';
 
 /**
  * Builds the JSON object, converting the Map to an object literal,

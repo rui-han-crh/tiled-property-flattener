@@ -1,6 +1,7 @@
 import { type ReadonlyEnumValues } from '../enum_values';
-import { mergeDeep } from '../merge_deep';
+import { mergeDeep } from '../utilities/merge_deep';
 import type ParserOptions from '../parser_options';
+import { getNestedProperty } from '../utilities/find_nested_property';
 import { COMPOSITE_PREFIX, INHERIT_PREFIX } from './tiled_constants';
 
 /**
@@ -214,7 +215,7 @@ export class Flattener {
                     // Enums without flags will have their parent property as a string, not a Set.
 
                     // Crawl up the parent properties to see if the left hand side is an enum.
-                    const parentProperty = parentProperties[leftHandSide];
+                    const parentProperty = getNestedProperty(parentProperties, leftHandSide);
                     if (parentProperty instanceof Set) {
                         return mergeDeep(
                             {

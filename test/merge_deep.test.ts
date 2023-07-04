@@ -1,4 +1,4 @@
-import { mergeDeep } from '../src/merge_deep';
+import { mergeDeep } from '../src/utilities/merge_deep';
 
 test(`
 Given two single layered objects,

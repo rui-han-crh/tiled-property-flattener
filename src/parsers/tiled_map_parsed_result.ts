@@ -1,4 +1,4 @@
-import { buildJSON } from '../build_json';
+import { buildJSON } from '../utilities/build_json';
 import type BasicProperties from '../properties/basic_properties';
 import type TilesetProperties from '../properties/tileset_properties';
 import { cloneDeep } from 'lodash';

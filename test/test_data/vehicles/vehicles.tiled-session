@@ -13,7 +13,7 @@
             "scale": 2.04546875,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 160.35444198304177,
+                "x": 158.88778550148956,
                 "y": 160.10999923611644
             }
         },
@@ -57,18 +57,21 @@
             }
         },
         "objects_with_properties.json": {
+            "expandedObjectLayers": [
+                3
+            ],
             "scale": 2,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 160,
-                "y": 160.25
+                "x": 174,
+                "y": 151.75
             }
         },
         "tiles_with_properties.json": {
             "scale": 2.3334374999999996,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 159.85000669612964,
+                "x": 159.42145439935717,
                 "y": 160.0642828445159
             }
         },
@@ -88,7 +91,7 @@
         "layers_with_properties.json"
     ],
     "project": "vehicles.tiled-project",
-    "property.type": "Flavours",
+    "property.type": "int",
     "recentFiles": [
         "tiles_with_properties.json",
         "layers_with_properties.json",

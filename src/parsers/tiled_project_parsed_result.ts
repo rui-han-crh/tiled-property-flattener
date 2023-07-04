@@ -3,7 +3,7 @@ import type BasicProperties from '../properties/basic_properties';
 import type BasicTileProperties from '../properties/basic_tile_properties';
 import { type Flattener } from './flattener';
 import { type ReadonlyEnumValues } from '../enum_values';
-import { buildJSON } from '../build_json';
+import { buildJSON } from '../utilities/build_json';
 
 export default class TiledProjectParsedResult {
     constructor (

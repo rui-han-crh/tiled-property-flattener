@@ -17,24 +17,19 @@
     },
     "objects": {
         "1": {
-            "motorVehicle": {
-                "vehicle": {
-                    "vehicleUsage": "OffRoad,Racing",
-                    "numberOfWheels": 0,
-                    "matter": {
-                        "weight": 0
-                    },
-                    "colour": "Red",
-                    "amountOfFuelLeft": 0,
-                    "number_of_wheels": 4
-                },
-                "engine": {
-                    "numberOfCylinders": 0,
-                    "matter": {
-                        "weight": 150
-                    }
-                }
+            "vehicleUsage": [
+                "OffRoad",
+                "Racing"
+            ],
+            "numberOfWheels": 0,
+            "weight": 0,
+            "colour": "Red",
+            "amountOfFuelLeft": 0,
+            "engine": {
+                "numberOfCylinders": 0,
+                "weight": 150
             },
+            "number_of_wheels": 4,
             "name": "testCar",
             "id": 1,
             "class": "Car",
@@ -57,22 +52,16 @@
             "tilewidth": 32,
             "tiles": {
                 "0": {
-                    "vehicle": {
-                        "vehicleUsage": [
-                            "OffRoad"
-                        ],
-                        "numberOfWheels": 4,
-                        "matter": {
-                            "weight": 3501.7
-                        },
-                        "colour": "Yellow",
-                        "amountOfFuelLeft": 0
-                    },
+                    "vehicleUsage": [
+                        "OffRoad"
+                    ],
+                    "numberOfWheels": 4,
+                    "weight": 3501.7,
+                    "colour": "Yellow",
+                    "amountOfFuelLeft": 0,
                     "engine": {
                         "numberOfCylinders": 8,
-                        "matter": {
-                            "weight": 150
-                        }
+                        "weight": 150
                     },
                     "id": 0,
                     "class": "MotorVehicle"
