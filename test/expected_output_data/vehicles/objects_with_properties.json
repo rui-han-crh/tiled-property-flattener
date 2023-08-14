@@ -113,7 +113,7 @@
             "vehicleUsage": [
                 "OffRoad"
             ],
-            "numberOfWheels": 0,
+            "numberOfWheels": 4,
             "weight": 3500,
             "colour": "Yellow",
             "amountOfFuelLeft": 230.378,
