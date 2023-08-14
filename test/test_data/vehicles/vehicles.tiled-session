@@ -13,7 +13,7 @@
             "scale": 2.04546875,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 159.86555648919105,
+                "x": 157.42112901993735,
                 "y": 160.10999923611644
             }
         },
@@ -63,8 +63,27 @@
             "scale": 2,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 160,
-                "y": 160.25
+                "x": 154.75,
+                "y": 154.75
+            }
+        },
+        "single-car-test.json": {
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 1.56453125,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 160.43143912913214,
+                "y": 160.11185458903427
+            }
+        },
+        "single-car-test.tmj": {
+            "scale": 1.56453125,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 160.43143912913214,
+                "y": 160.11185458903427
             }
         },
         "tiles_with_properties.json": {
@@ -93,9 +112,11 @@
     "project": "vehicles.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "single-car-test.json",
+        "objects_with_properties.json",
+        "single-car-test.tmj",
         "tiles_with_properties.json",
         "layers_with_properties.json",
-        "objects_with_properties.json",
         "map1.json",
         "layers_with_properties_2.json",
         "map3.json",

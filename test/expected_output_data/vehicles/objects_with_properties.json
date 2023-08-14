@@ -84,6 +84,7 @@
                 "numberOfCylinders": 4,
                 "weight": 150
             },
+            "number_of_wheels": 4,
             "name": "audiA4",
             "id": 4,
             "class": "AudiA4",
@@ -103,6 +104,7 @@
                 "numberOfCylinders": 4,
                 "weight": 150
             },
+            "number_of_wheels": 4,
             "name": "mazda",
             "id": 5,
             "class": "Car",
@@ -121,6 +123,7 @@
                 "numberOfCylinders": 8,
                 "weight": 150
             },
+            "number_of_wheels": 4,
             "name": "monsterTruck",
             "id": 6,
             "class": "Car",
@@ -145,7 +148,7 @@
         },
         "8": {
             "vehicleUsage": [],
-            "numberOfWheels": 8,
+            "numberOfWheels": 0,
             "weight": 0,
             "colour": "Red",
             "amountOfFuelLeft": 0,
