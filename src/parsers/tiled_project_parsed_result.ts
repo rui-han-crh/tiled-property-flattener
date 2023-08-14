@@ -1,9 +1,9 @@
 import { cloneDeep } from 'lodash';
 import type BasicProperties from '../properties/basic_properties';
-import BasicTileProperties from '../properties/basic_tile_properties';
+import type BasicTileProperties from '../properties/basic_tile_properties';
 import { type Flattener } from './flattener';
-import { ReadonlyEnumValues } from '../enum_values';
-import { buildJSON } from '../build_json';
+import { type ReadonlyEnumValues } from '../enum_values';
+import { buildJSON } from '../utilities/build_json';
 
 export default class TiledProjectParsedResult {
     constructor (
@@ -14,9 +14,9 @@ export default class TiledProjectParsedResult {
      * Flattens the properties of a Tiled object/layer.
      *
      * This will overwrite the properties of the parent class with the properties of the object.
-     * 
-     * The parser options `defaultComposite` specified in the TiledProjectParser will 
-     * determine whether the tile properties are flattened into the root of the class, 
+     *
+     * The parser options `defaultComposite` specified in the TiledProjectParser will
+     * determine whether the tile properties are flattened into the root of the class,
      * or whether they are composed under the root class (defaulted to `false`, where classes
      * are always flattened unless otherwise specified).
      *
@@ -44,11 +44,11 @@ export default class TiledProjectParsedResult {
 
     /**
      * Flatten the properties of a Tiled tile.
-     * 
+     *
      * This will overwrite the properties of the parent class with the properties of the tile.
-     * 
-     * The parser options `defaultComposite` specified in the TiledProjectParser will 
-     * determine whether the tile properties are flattened into the root of the class, 
+     *
+     * The parser options `defaultComposite` specified in the TiledProjectParser will
+     * determine whether the tile properties are flattened into the root of the class,
      * or whether they are composed under the root class (defaulted to `false`, where classes
      * are always flattened unless otherwise specified).
      *
@@ -64,9 +64,8 @@ export default class TiledProjectParsedResult {
             ), {}),
             id: tile.id,
             class: tile.class ?? tile.type ?? null
-        }
+        };
     }
-
 
     /**
      * Gets a copy of the flattened properties of the given class, where the keys are type names
@@ -83,10 +82,10 @@ export default class TiledProjectParsedResult {
     /**
      * Gets a copy of the enums and their values, where the keys are the enum names
      * and its mapped value is an object, including properties:
-     * 
+     *
      * values: The Set of the enum values.
-     * 
-     * valuesAsFlags: Whether the enum values are treated as flags, 
+     *
+     * valuesAsFlags: Whether the enum values are treated as flags,
      * i.e. whether multiple values can be selected.
      * This is declared in the Tiled custom types as checkbox called `Allow multiple values`.
      */
@@ -100,7 +99,7 @@ export default class TiledProjectParsedResult {
 
     /**
      * Gets a JSON of the parsed result.
-     * 
+     *
      * The JSON contains two distinct sections:
      * - `customTypes`: A map of the custom types, where the keys are the type names
      * and each mapped value is a copy of the original properties.

@@ -1,0 +1,98 @@
+{
+    "customTypes": {
+        "BakingRecipe": {
+            "requiresOven": true
+        },
+        "NutritionalValue": {
+            "vitamins": 0,
+            "sugarContent": 0,
+            "energy": 0
+        },
+        "Ingredient": {
+            "nutritionalValue": {
+                "vitamins": 0,
+                "sugarContent": 0,
+                "energy": 0
+            },
+            "amountInGrams": 0
+        },
+        "CakeRecipe": {
+            "requiresOven": true,
+            "bakingPowder": {
+                "nutritionalValue": {
+                    "vitamins": 0,
+                    "sugarContent": 0,
+                    "energy": 0
+                },
+                "amountInGrams": 420,
+                "sugarContent": 4,
+                "energy": 1
+            },
+            "eggs": {
+                "nutritionalValue": {
+                    "vitamins": 0,
+                    "sugarContent": 0,
+                    "energy": 0
+                },
+                "amountInGrams": 105,
+                "vitamins": 10,
+                "sugarContent": 2,
+                "energy": 10
+            },
+            "flour": {
+                "nutritionalValue": {
+                    "vitamins": 0,
+                    "sugarContent": 0,
+                    "energy": 0
+                },
+                "amountInGrams": 360,
+                "vitamins": 3,
+                "energy": 50
+            },
+            "milk": {
+                "nutritionalValue": {
+                    "vitamins": 0,
+                    "sugarContent": 0,
+                    "energy": 0
+                },
+                "amountInGrams": 120,
+                "vitamins": 10,
+                "sugarContent": 25,
+                "energy": 50
+            },
+            "unsaltedButter": {
+                "nutritionalValue": {
+                    "vitamins": 0,
+                    "sugarContent": 0,
+                    "energy": 0
+                },
+                "amountInGrams": 120,
+                "vitamins": 3,
+                "sugarContent": 50,
+                "energy": 150
+            },
+            "vanillaExtract": {
+                "nutritionalValue": {
+                    "vitamins": 0,
+                    "sugarContent": 0,
+                    "energy": 0
+                },
+                "amountInGrams": 8.4,
+                "sugarContent": 3,
+                "energy": 3
+            },
+            "whiteSugar": {
+                "nutritionalValue": {
+                    "vitamins": 0,
+                    "sugarContent": 0,
+                    "energy": 0
+                },
+                "amountInGrams": 240,
+                "vitamins": 2,
+                "sugarContent": 80,
+                "energy": 150
+            }
+        }
+    },
+    "enums": {}
+}

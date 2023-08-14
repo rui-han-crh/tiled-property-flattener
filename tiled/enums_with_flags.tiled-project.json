@@ -1,0 +1,104 @@
+{
+    "customTypes": {
+        "Person": {
+            "gender": "Male"
+        },
+        "Professor": {
+            "person": {
+                "gender": "Male"
+            },
+            "officeAddress": "",
+            "currentTeachingModule": []
+        },
+        "Hailey": {
+            "professor": {
+                "person": {
+                    "gender": "Female"
+                },
+                "officeAddress": "15 Computing Dr, Singapore 117418, #15-02",
+                "currentTeachingModule": [
+                    "CS2030S",
+                    "CS2101",
+                    "CS2102"
+                ]
+            }
+        },
+        "TeachingAssistant": {
+            "currentTeachingModule": []
+        },
+        "LabTeachingAssistant": {
+            "teachingAssistant": {
+                "currentTeachingModule": []
+            }
+        },
+        "Jonathan": {
+            "labTeachingAssistant": {
+                "teachingAssistant": {
+                    "currentTeachingModule": "CS2030S"
+                }
+            },
+            "person": {
+                "gender": "Male"
+            }
+        },
+        "TutorialTeachingAssistant": {
+            "teachingAssistant": {
+                "currentTeachingModule": []
+            }
+        },
+        "Rachel": {
+            "person": {
+                "gender": "Female"
+            },
+            "tutorialTeachingAssistant": {
+                "teachingAssistant": {
+                    "currentTeachingModule": "CS1010X,CS2103T"
+                }
+            }
+        },
+        "Student": {
+            "person": {
+                "gender": "Male"
+            }
+        },
+        "Tammy": {
+            "person": {
+                "gender": "Female"
+            },
+            "teachingAssistant": {
+                "currentTeachingModule": []
+            }
+        },
+        "Thomas": {
+            "student": {
+                "person": {
+                    "gender": "Male"
+                }
+            },
+            "teachingAssistant": {
+                "currentTeachingModule": [
+                    "CS1010X",
+                    "CS2030S",
+                    "CS2102",
+                    "MA1521"
+                ]
+            }
+        }
+    },
+    "enums": {
+        "Gender": [
+            "Male",
+            "Female"
+        ],
+        "Module": [
+            "CS1010X",
+            "CS2030S",
+            "CS2040S",
+            "CS2103T",
+            "CS2101",
+            "CS2102",
+            "MA1521",
+            "MA2001"
+        ]
+    }
+}

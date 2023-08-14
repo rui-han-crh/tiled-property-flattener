@@ -1,4 +1,4 @@
-import BasicTileProperties from "./basic_tile_properties";
+import type BasicTileProperties from './basic_tile_properties';
 
 /**
  * The basic properties of a Tiled tileset.

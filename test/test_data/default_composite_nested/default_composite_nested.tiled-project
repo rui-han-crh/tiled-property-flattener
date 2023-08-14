@@ -49,7 +49,11 @@
                     "propertyType": "Ingredient",
                     "type": "class",
                     "value": {
-                        "amountInGrams": 420
+                        "amountInGrams": 420,
+                        "nutritionalValue": {
+                            "energy": 1,
+                            "sugarContent": 4
+                        }
                     }
                 },
                 {
@@ -57,7 +61,12 @@
                     "propertyType": "Ingredient",
                     "type": "class",
                     "value": {
-                        "amountInGrams": 105
+                        "amountInGrams": 105,
+                        "nutritionalValue": {
+                            "energy": 10,
+                            "sugarContent": 2,
+                            "vitamins": 10
+                        }
                     }
                 },
                 {
@@ -65,7 +74,11 @@
                     "propertyType": "Ingredient",
                     "type": "class",
                     "value": {
-                        "amountInGrams": 360
+                        "amountInGrams": 360,
+                        "nutritionalValue": {
+                            "energy": 50,
+                            "vitamins": 3
+                        }
                     }
                 },
                 {
@@ -73,7 +86,12 @@
                     "propertyType": "Ingredient",
                     "type": "class",
                     "value": {
-                        "amountInGrams": 120
+                        "amountInGrams": 120,
+                        "nutritionalValue": {
+                            "energy": 50,
+                            "sugarContent": 25,
+                            "vitamins": 10
+                        }
                     }
                 },
                 {
@@ -81,7 +99,12 @@
                     "propertyType": "Ingredient",
                     "type": "class",
                     "value": {
-                        "amountInGrams": 120
+                        "amountInGrams": 120,
+                        "nutritionalValue": {
+                            "energy": 150,
+                            "sugarContent": 50,
+                            "vitamins": 3
+                        }
                     }
                 },
                 {
@@ -89,7 +112,11 @@
                     "propertyType": "Ingredient",
                     "type": "class",
                     "value": {
-                        "amountInGrams": 8.4
+                        "amountInGrams": 8.4,
+                        "nutritionalValue": {
+                            "energy": 3,
+                            "sugarContent": 3
+                        }
                     }
                 },
                 {
@@ -97,7 +124,12 @@
                     "propertyType": "Ingredient",
                     "type": "class",
                     "value": {
-                        "amountInGrams": 240
+                        "amountInGrams": 240,
+                        "nutritionalValue": {
+                            "energy": 150,
+                            "sugarContent": 80,
+                            "vitamins": 2
+                        }
                     }
                 }
             ],
