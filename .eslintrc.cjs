@@ -35,7 +35,7 @@ module.exports = {
     parserOptions: {
         ecmaVersion: 'latest',
         sourceType: 'module',
-        project: './tsconfig.json'
+        project: ['./tsconfig.json', './tsconfig.test.json']
     },
     rules: {
         '@typescript-eslint/member-delimiter-style': ['off'],

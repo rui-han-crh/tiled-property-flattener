@@ -7,14 +7,14 @@ then returns the expected merged object.
 `, () => {
     // ARRANGE
     const object1 = {
-        'name': 'object1',
-        'property1': 'value1',
-        'property2': 'value2'
+        name: 'object1',
+        property1: 'value1',
+        property2: 'value2'
     };
     const object2 = {
-        'name': 'object1',
-        'property1': 'value3',
-        'property2': 'value2'
+        name: 'object1',
+        property1: 'value3',
+        property2: 'value2'
     };
 
     // ACT
@@ -23,9 +23,9 @@ then returns the expected merged object.
 
     // ASSERT
     expect(mergedObject).toEqual({
-        'name': 'object1',
-        'property1': 'value3',
-        'property2': 'value2'
+        name: 'object1',
+        property1: 'value3',
+        property2: 'value2'
     });
 });
 
@@ -36,27 +36,27 @@ then returns the expected merged object.
 `, () => {
     // ARRANGE
     const object1 = {
-        'name': 'object1',
-        'property1': 'value1',
-        'property2': {
-            'property3': 'value3',
-            'property4': 'value4',
-            'property5': {
-                'property6': 'value6',
-                'property7': 'value7'
+        name: 'object1',
+        property1: 'value1',
+        property2: {
+            property3: 'value3',
+            property4: 'value4',
+            property5: {
+                property6: 'value6',
+                property7: 'value7'
             }
         }
-    }
+    };
 
     const object2 = {
-        'name': 'object1',
-        'property2': {
-            'property3': 'value8',
-            'property5': {
-                'property7': 'value9'
+        name: 'object1',
+        property2: {
+            property3: 'value8',
+            property5: {
+                property7: 'value9'
             }
         }
-    }
+    };
 
     // ACT
     // Call the mergeDeep method.
@@ -64,14 +64,14 @@ then returns the expected merged object.
 
     // ASSERT
     expect(mergedObject).toEqual({
-        'name': 'object1',
-        'property1': 'value1',
-        'property2': {
-            'property3': 'value8',
-            'property4': 'value4',
-            'property5': {
-                'property6': 'value6',
-                'property7': 'value9'
+        name: 'object1',
+        property1: 'value1',
+        property2: {
+            property3: 'value8',
+            property4: 'value4',
+            property5: {
+                property6: 'value6',
+                property7: 'value9'
             }
         }
     });
@@ -84,24 +84,24 @@ then returns the expected merged object.
 `, () => {
     // ARRANGE
     const object1 = {
-        'name': 'object1',
-        'property1': 'value1',
-        'property2': {
-            'property3': 'value3',
-            'property5': {
-                'property6': 'value6',
-                'property7': 'value7'
+        name: 'object1',
+        property1: 'value1',
+        property2: {
+            property3: 'value3',
+            property5: {
+                property6: 'value6',
+                property7: 'value7'
             }
         }
-    }
+    };
 
     const object2 = {
-        'name': 'object1',
-        'property2': {
-            'property4': 'value4',
+        name: 'object1',
+        property2: {
+            property4: 'value4'
         },
-        'property8': 'value8'
-    }
+        property8: 'value8'
+    };
 
     // ACT
     // Call the mergeDeep method.
@@ -109,17 +109,17 @@ then returns the expected merged object.
 
     // ASSERT
     expect(mergedObject).toEqual({
-        'name': 'object1',
-        'property1': 'value1',
-        'property2': {
-            'property3': 'value3',
-            'property4': 'value4',
-            'property5': {
-                'property6': 'value6',
-                'property7': 'value7'
+        name: 'object1',
+        property1: 'value1',
+        property2: {
+            property3: 'value3',
+            property4: 'value4',
+            property5: {
+                property6: 'value6',
+                property7: 'value7'
             }
         },
-        'property8': 'value8'
+        property8: 'value8'
     });
 });
 
@@ -130,13 +130,13 @@ then returns causes the second object to put the key in the first object.
 `, () => {
     // ARRANGE
     const object1 = {
-        'name': 'object1'
-    }
+        name: 'object1'
+    };
 
     const object2 = {
-        'name': 'object1',
-        'property1': 'value1'
-    }
+        name: 'object1',
+        property1: 'value1'
+    };
 
     // ACT
     // Call the mergeDeep method.
@@ -144,8 +144,8 @@ then returns causes the second object to put the key in the first object.
 
     // ASSERT
     expect(mergedObject).toEqual({
-        'name': 'object1',
-        'property1': 'value1',
+        name: 'object1',
+        property1: 'value1'
     });
 });
 
@@ -156,24 +156,24 @@ then returns the expected merged object.
 `, () => {
     // ARRANGE
     const object1 = {
-        'name': 'object1',
-        'property1': 'value1',
-        'property2': {
-            'property3': new Set<string>(['value3', 'value4']),
-            'property5': {
-                'property6': 'value6',
-                'property7': 'value7'
+        name: 'object1',
+        property1: 'value1',
+        property2: {
+            property3: new Set<string>(['value3', 'value4']),
+            property5: {
+                property6: 'value6',
+                property7: 'value7'
             }
         }
-    }
+    };
 
     const object2 = {
-        'name': 'object1',
-        'property2': {
-            'property4': new Set<string>(['value4', 'value5']),
+        name: 'object1',
+        property2: {
+            property4: new Set<string>(['value4', 'value5'])
         },
-        'property8': 'value8'
-    }
+        property8: 'value8'
+    };
 
     // ACT
     // Call the mergeDeep method.
@@ -181,17 +181,17 @@ then returns the expected merged object.
 
     // ASSERT
     expect(mergedObject).toEqual({
-        'name': 'object1',
-        'property1': 'value1',
-        'property2': {
-            'property3': new Set<string>(['value3', 'value4']),
-            'property4': new Set<string>(['value4', 'value5']),
-            'property5': {
-                'property6': 'value6',
-                'property7': 'value7'
+        name: 'object1',
+        property1: 'value1',
+        property2: {
+            property3: new Set<string>(['value3', 'value4']),
+            property4: new Set<string>(['value4', 'value5']),
+            property5: {
+                property6: 'value6',
+                property7: 'value7'
             }
         },
-        'property8': 'value8'
+        property8: 'value8'
     });
 });
 
@@ -202,24 +202,24 @@ then returns the expected merged object.
 `, () => {
     // ARRANGE
     const object1 = {
-        'name': 'object1',
-        'property1': 'value1',
-        'property2': {
-            'property3': new Set<string>(['value3', 'value4']),
-            'property5': {
-                'property6': 'value6',
-                'property7': 'value7'
+        name: 'object1',
+        property1: 'value1',
+        property2: {
+            property3: new Set<string>(['value3', 'value4']),
+            property5: {
+                property6: 'value6',
+                property7: 'value7'
             }
         }
-    }
+    };
 
     const object2 = {
-        'name': 'object1',
-        'property2': {
-            'property3': new Set<string>(['value4', 'value5']),
+        name: 'object1',
+        property2: {
+            property3: new Set<string>(['value4', 'value5'])
         },
-        'property8': 'value8'
-    }
+        property8: 'value8'
+    };
 
     // ACT
     // Call the mergeDeep method.
@@ -227,15 +227,15 @@ then returns the expected merged object.
 
     // ASSERT
     expect(mergedObject).toEqual({
-        'name': 'object1',
-        'property1': 'value1',
-        'property2': {
-            'property3': new Set<string>(['value4', 'value5']),
-            'property5': {
-                'property6': 'value6',
-                'property7': 'value7'
+        name: 'object1',
+        property1: 'value1',
+        property2: {
+            property3: new Set<string>(['value4', 'value5']),
+            property5: {
+                property6: 'value6',
+                property7: 'value7'
             }
         },
-        'property8': 'value8'
+        property8: 'value8'
     });
 });

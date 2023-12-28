@@ -15,7 +15,7 @@ then returns the expected custom types.
     // ACT
     // Parse the .tiled-project file.
     const tiledProjectParsedResult = TiledProjectParser.parse(jsonProjectFileData);
-    
+
     // Retrieve the custom classes.
     const customClasses = tiledProjectParsedResult.getCustomTypesMap();
 
@@ -68,7 +68,7 @@ then returns the expected custom enums.
     // ACT
     // Parse the .tiled-project file.
     const tiledProjectParsedResult = TiledProjectParser.parse(jsonProjectFileData);
-    
+
     // Retrieve the custom classes.
     const customEnums = tiledProjectParsedResult.getEnumsMap();
 

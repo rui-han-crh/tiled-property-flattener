@@ -1,4 +1,4 @@
-import { TiledMapParser, TiledProjectParser } from "../src/tiled_property_flattener";
+import { TiledMapParser, TiledProjectParser } from '../src/tiled_property_flattener';
 import fs from 'fs';
 
 test(`
@@ -31,29 +31,32 @@ then the original layer map is not mutated.
     expect(layerIdToPropertiesMap.has(id)).toBe(true);
 
     // Save the original name property of the layer.
-    const originalName = layerIdToPropertiesMap.get(id)!.name;
+    const originalName = layerIdToPropertiesMap.get(id)?.name;
 
     // Save the original numberOfCylinders property of the layer.
-    const originalNumberOfCylinders: number = (layerIdToPropertiesMap.get(id)! as any).engine.numberOfCylinders;
+    const originalNumberOfCylinders: number = (layerIdToPropertiesMap.get(id) as any).engine.numberOfCylinders;
 
     // Mutate the name property of the layer.
-    layerIdToPropertiesMap.get(id)!.name = 'Mutated Name';
+    const layerIdToPropertiesId = layerIdToPropertiesMap.get(id);
+    if (layerIdToPropertiesId !== undefined) {
+        layerIdToPropertiesId.name = 'Mutated Name';
+    }
 
     // Mutate the numberOfCylinders property of the layer.
-    (layerIdToPropertiesMap.get(id)! as any).engine.numberOfCylinders = 100;
+    (layerIdToPropertiesMap.get(id) as any).engine.numberOfCylinders = 100;
 
     // ASSERT
     // Check that property mutations are reflected in the layer map.
-    expect(layerIdToPropertiesMap.get(id)!.name)
+    expect(layerIdToPropertiesMap.get(id)?.name)
         .toBe('Mutated Name');
 
-    expect((layerIdToPropertiesMap.get(id)! as any).engine.numberOfCylinders)
+    expect((layerIdToPropertiesMap.get(id) as any).engine.numberOfCylinders)
         .toBe(100);
 
     // Check that the original layer map is not mutated.
-    expect(tiledMapParsedResult.getLayerIdToPropertiesMap().get(id)!.name)
+    expect(tiledMapParsedResult.getLayerIdToPropertiesMap().get(id)?.name)
         .toBe(originalName);
-    expect((tiledMapParsedResult.getLayerIdToPropertiesMap().get(id)! as any).engine.numberOfCylinders)
+    expect((tiledMapParsedResult.getLayerIdToPropertiesMap().get(id) as any).engine.numberOfCylinders)
         .toBe(originalNumberOfCylinders);
 });
 
@@ -87,29 +90,32 @@ then the original object map is not mutated.
     expect(objectIdToPropertiesMap.has(id)).toBe(true);
 
     // Save the original name property of the layer.
-    const originalName = objectIdToPropertiesMap.get(id)!.name;
+    const originalName = objectIdToPropertiesMap.get(id)?.name;
 
     // Save the original numberOfCylinders property of the layer.
-    const originalNumberOfCylinders: number = (objectIdToPropertiesMap.get(id)! as any).engine.numberOfCylinders;
+    const originalNumberOfCylinders: number = (objectIdToPropertiesMap.get(id) as any).engine.numberOfCylinders;
 
     // Mutate the name property of the layer.
-    objectIdToPropertiesMap.get(id)!.name = 'Mutated Name';
+    const objectIdToPropertiesId = objectIdToPropertiesMap.get(id);
+    if (objectIdToPropertiesId !== undefined) {
+        objectIdToPropertiesId.name = 'Mutated Name';
+    }
 
     // Mutate the numberOfCylinders property of the layer.
-    (objectIdToPropertiesMap.get(id)! as any).engine.numberOfCylinders = 100;
+    (objectIdToPropertiesMap.get(id) as any).engine.numberOfCylinders = 100;
 
     // ASSERT
     // Check that property mutations are reflected in the layer map.
-    expect(objectIdToPropertiesMap.get(id)!.name)
+    expect(objectIdToPropertiesMap.get(id)?.name)
         .toBe('Mutated Name');
 
-    expect((objectIdToPropertiesMap.get(id)! as any).engine.numberOfCylinders)
+    expect((objectIdToPropertiesMap.get(id) as any).engine.numberOfCylinders)
         .toBe(100);
 
     // Check that the original layer map is not mutated.
-    expect(tiledMapParsedResult.getObjectIdToPropertiesMap().get(id)!.name)
+    expect(tiledMapParsedResult.getObjectIdToPropertiesMap().get(id)?.name)
         .toBe(originalName);
-    expect((tiledMapParsedResult.getObjectIdToPropertiesMap().get(id)! as any).engine.numberOfCylinders)
+    expect((tiledMapParsedResult.getObjectIdToPropertiesMap().get(id) as any).engine.numberOfCylinders)
         .toBe(originalNumberOfCylinders);
 });
 
@@ -143,29 +149,35 @@ then the original tileset map is not mutated.
     expect(tilesetIdToPropertiesMap.has(firstgid)).toBe(true);
 
     // Save the original name property of the tileset.
-    const originalName = tilesetIdToPropertiesMap.get(firstgid)!.name;
+    const originalName = tilesetIdToPropertiesMap.get(firstgid)?.name;
+
+    // Ensure originalName is defined.
+    expect(originalName).toBeDefined();
 
     // Save the original numberOfCylinders property of the layer.
-    const originalNumberOfCylinders: number = (tilesetIdToPropertiesMap.get(firstgid)! as any).tiles.get(0).engine.numberOfCylinders;
+    const originalNumberOfCylinders: number = (tilesetIdToPropertiesMap.get(firstgid) as any).tiles.get(0).engine.numberOfCylinders;
 
     // Mutate the name property of the layer.
-    tilesetIdToPropertiesMap.get(firstgid)!.name = 'Mutated Name';
+    const tilesetIdToPropertiesFirstgid = tilesetIdToPropertiesMap.get(firstgid);
+    if (tilesetIdToPropertiesFirstgid !== undefined) {
+        tilesetIdToPropertiesFirstgid.name = 'Mutated Name';
+    }
 
     // Mutate the numberOfCylinders property of the layer.
-    (tilesetIdToPropertiesMap.get(firstgid)! as any).tiles.get(0).engine.numberOfCylinders = 100;
+    (tilesetIdToPropertiesMap.get(firstgid) as any).tiles.get(0).engine.numberOfCylinders = 100;
 
     // ASSERT
     // Check that property mutations are reflected in the layer map.
-    expect(tilesetIdToPropertiesMap.get(firstgid)!.name)
+    expect(tilesetIdToPropertiesMap.get(firstgid)?.name)
         .toBe('Mutated Name');
 
-    expect((tilesetIdToPropertiesMap.get(firstgid)! as any).tiles.get(0).engine.numberOfCylinders)
+    expect((tilesetIdToPropertiesMap.get(firstgid) as any).tiles.get(0).engine.numberOfCylinders)
         .toBe(100);
 
     // Check that the original layer map is not mutated.
-    expect(tiledMapParsedResult.getTilesetIdToPropertiesMap().get(firstgid)!.name)
+    expect(tiledMapParsedResult.getTilesetIdToPropertiesMap().get(firstgid)?.name)
         .toBe(originalName);
-    expect((tiledMapParsedResult.getTilesetIdToPropertiesMap().get(firstgid)! as any).tiles.get(0).engine.numberOfCylinders)
+    expect((tiledMapParsedResult.getTilesetIdToPropertiesMap().get(firstgid) as any).tiles.get(0).engine.numberOfCylinders)
         .toBe(originalNumberOfCylinders);
 });
 

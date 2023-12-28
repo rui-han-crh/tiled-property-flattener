@@ -1,6 +1,6 @@
 {
   "name": "tiled-property-flattener",
-  "version": "1.0.10",
+  "version": "1.1.1",
   "description": "Provides a way to parse Tiled project files (.tiled-project) and maps into typescript usable format,. Additionally, it also flattens the properties of nested Tiled classes into the root Tiled class's/object's/layer's own properties, as if it had inherited the properties, unless otherwise specified.",
   "main": "dist/tiled_property_flattener.min.js",
   "types": "dist/tiled_property_flattener.d.ts",

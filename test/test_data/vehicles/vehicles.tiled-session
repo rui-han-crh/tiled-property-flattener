@@ -63,8 +63,8 @@
             "scale": 2,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 154.75,
-                "y": 154.75
+                "x": 153.5,
+                "y": 154.25
             }
         },
         "single-car-test.json": {
@@ -90,7 +90,7 @@
             "scale": 2.3334374999999996,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 159.85000669612967,
+                "x": 159.4214543993572,
                 "y": 160.0642828445159
             }
         },
@@ -112,11 +112,11 @@
     "project": "vehicles.tiled-project",
     "property.type": "int",
     "recentFiles": [
-        "single-car-test.json",
-        "objects_with_properties.json",
-        "single-car-test.tmj",
         "tiles_with_properties.json",
         "layers_with_properties.json",
+        "objects_with_properties.json",
+        "single-car-test.json",
+        "single-car-test.tmj",
         "map1.json",
         "layers_with_properties_2.json",
         "map3.json",

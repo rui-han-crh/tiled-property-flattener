@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+            "target": "ES2019",
+            "moduleResolution": "node",
+            "strictNullChecks": true,
+            "resolveJsonModule": true,
+            "esModuleInterop": true,
+            "allowSyntheticDefaultImports": true,
+            "declaration": true,
+            "emitDeclarationOnly": true,
+            "outDir": "./dist"
+    },
+    "include": ["./test/**/*"],
+    "exclude": ["node_modules", "dist"]
+}

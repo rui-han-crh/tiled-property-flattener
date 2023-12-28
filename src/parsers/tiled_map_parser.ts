@@ -17,10 +17,13 @@ export function parse (jsonData: any, parsedProject: TiledProjectParsedResult): 
     const tilesetIdToPropertiesMap = new Map<number, TilesetProperties>();
 
     // Gather the properties of all the layers, including inherited properties.
+    // recursively traverse the layers, check if its a layer group, collecting only the leaves (tile layers).
     jsonData.layers.forEach((layer: any) => {
-        const layerProperties = parsedProject.flattenPropertiesOnObject(layer);
+        const layerMap = traverseLayers(layer, parsedProject);
 
-        layerIdToPropertiesMap.set(layerProperties.id, layerProperties);
+        layerMap.forEach((value, key) => {
+            layerIdToPropertiesMap.set(key, value);
+        });
     });
 
     // Gather the properties of all the objects, including inherited properties.
@@ -70,3 +73,15 @@ function parseTileset (tileset: any, parsedProject: TiledProjectParsedResult): T
         }))
     };
 };
+
+function traverseLayers (layer: any, parsedProject: TiledProjectParsedResult): Map<number, BasicProperties> {
+    if (layer.type !== 'group') {
+        const layerProperties = parsedProject.flattenPropertiesOnObject(layer);
+        return new Map<number, BasicProperties>([[layerProperties.id, layerProperties]]);
+    }
+
+    return layer.layers.reduce((accumulator: Map<number, BasicProperties>, subLayer: any) => {
+        const subLayerMap = traverseLayers(subLayer, parsedProject);
+        return new Map<number, BasicProperties>([...accumulator, ...subLayerMap]);
+    }, new Map<number, BasicProperties>());
+}
