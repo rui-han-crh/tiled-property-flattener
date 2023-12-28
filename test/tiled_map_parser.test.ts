@@ -1,8 +1,8 @@
 import fs from 'fs';
 import * as TiledProjectParser from '../src/parsers/tiled_project_parser';
 import * as TiledMapParser from '../src/parsers/tiled_map_parser';
-import BasicTileProperties from '../src/properties/basic_tile_properties';
-import { BasicProperties } from '../src/tiled_property_flattener';
+import type BasicTileProperties from '../src/properties/basic_tile_properties';
+import { type BasicProperties } from '../src/tiled_property_flattener';
 
 test(`
 Given a map file that references custom classes,
@@ -37,16 +37,16 @@ then parses all the objects in the map and flattens its properties.
                 .map((properties: BasicProperties) => properties.name)
         )
     )
-    .toEqual(new Set<string>(
-        [
-            'boeing737',
-            'audiA4',
-            'mazda',
-            'defaultPlane',
-            'motorVehicle',
-            'monsterTruck'
-        ]
-    ));
+        .toEqual(new Set<string>(
+            [
+                'boeing737',
+                'audiA4',
+                'mazda',
+                'defaultPlane',
+                'motorVehicle',
+                'monsterTruck'
+            ]
+        ));
 
     expect(objectIdToPropertiesMap.get(1)).toEqual({
         name: 'boeing737',
@@ -102,11 +102,11 @@ then parses all the tiles in the map and flattens its properties.
     expect(tilesetIdToPropertiesMap.get(1)).toEqual({
         columns: 4,
         firstgid: 1,
-        image: "template-tileset.png",
+        image: 'template-tileset.png',
         imageheight: 128,
         imagewidth: 128,
         margin: 0,
-        name: "template-tileset",
+        name: 'template-tileset',
         spacing: 0,
         tilecount: 16,
         tileheight: 32,
@@ -128,4 +128,39 @@ then parses all the tiles in the map and flattens its properties.
         ]
         )
     });
+});
+
+test(`
+Given a map file with singly nested layer groups,
+when calling the parse method,
+then parses layer will all appear to be flattened.
+`, () => {
+    // ARRANGE
+    // Fetch the test data file path.
+    const projectFilePath = 'test/test_data/layer_groups/layer_groups.tiled-project';
+    const mapFilePath = 'test/test_data/layer_groups/single_layers.json';
+
+    // Read in the .tiled-project file.
+    const jsonProjectFileData = JSON.parse(fs.readFileSync(projectFilePath, 'utf8'));
+    // Read in the .json map file.
+    const jsonMapFileData = JSON.parse(fs.readFileSync(mapFilePath, 'utf8'));
+
+    // ACT
+    // Parse the .tiled-project file.
+    const tiledProjectParsedResult = TiledProjectParser.parse(jsonProjectFileData);
+    // Parse the .json map file.
+    const tiledMapParsedResult = TiledMapParser.parse(jsonMapFileData, tiledProjectParsedResult);
+
+    // Retrieve the layer id to properties map.
+    const layerIdToPropertiesMap = tiledMapParsedResult.getLayerIdToPropertiesMap();
+
+    // ASSERT
+    // Check that the parsed map contains the expected flattened layers.
+    expect(
+        new Set<string>(
+            Array.from(layerIdToPropertiesMap.values())
+                .map((properties: BasicProperties) => properties.name)
+        )
+    )
+        .toEqual(new Set<string>(['a', 'b', 'c', 'd']));
 });
